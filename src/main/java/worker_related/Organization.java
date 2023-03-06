@@ -2,7 +2,7 @@ package worker_related;
 
 import java.util.Objects;
 
-public class Organization {
+public class Organization implements Comparable<Organization> {
     private String fullName; // not null
     private Integer annualTurnover; // > 0, not null
     private Long employeesCount; // > 0, not null
@@ -39,4 +39,20 @@ public class Organization {
     }
     @Override
     public int hashCode() { return Objects.hash(fullName, annualTurnover, employeesCount, postalAddress); }
+    @Override
+    public int compareTo(Organization org) {
+        if (this.annualTurnover > org.annualTurnover) {
+            return 1;
+        }
+        if (this.annualTurnover < org.annualTurnover) {
+            return -1;
+        }
+        if (this.employeesCount > org.employeesCount) {
+            return 1;
+        }
+        if (this.employeesCount < org.employeesCount) {
+            return -1;
+        }
+        return Character.compare(this.fullName.charAt(0), org.fullName.charAt(0));
+    }
 }
