@@ -9,7 +9,13 @@ public class App {
         Worker worker1 = new Worker(1, "Валентин", new Coordinates(34.9, 85.32),
                 java.time.LocalDate.now(), 8000, java.time.LocalDate.now(), Position.DEVELOPER,
                 Status.REGULAR, new Organization("Могилевлифтмаш", 450000, 143L,
-                new Address("Малочаевская", "67852")));
+                new Address("Малочаевская ул.", "67852")));
+        Worker worker2 = new Worker(1, "Валентин", new Coordinates(34.9, 85.32),
+                java.time.LocalDate.now(), 8000, java.time.LocalDate.now(), Position.DEVELOPER,
+                Status.REGULAR, new Organization("Могилевлифтмаш", 450000, 143L,
+                new Address("Малочаевская ул.", "67852")));
         System.out.println(worker1);
+        System.out.println(worker2);
+        System.out.println(worker1.equals(worker2));
     }
 }
