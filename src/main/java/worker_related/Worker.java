@@ -69,6 +69,12 @@ public class Worker implements Comparable<Worker> {
     }
     @Override
     public int compareTo(Worker worker) {
+        if (this.status == Status.FIRED && worker.status != Status.FIRED) {
+            return -1;
+        }
+        if (this.status != Status.FIRED && worker.status == Status.FIRED) {
+            return 1;
+        }
         if (this.position == Position.HEAD_OF_DEPARTMENT && worker.position != Position.HEAD_OF_DEPARTMENT) {
             return 1;
         }
