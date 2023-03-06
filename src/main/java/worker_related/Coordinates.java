@@ -11,6 +11,11 @@ public class Coordinates {
         this.y = y;
     }
 
+    public double getX() { return x; }
+    public void setX(double x) { this.x = x; }
+    public Double getY() { return y; }
+    public void setY(Double y) { this.y = y; }
+
     @Override
     public String toString() { return "(" + this.x + ", " + this.y + ")"; }
     @Override

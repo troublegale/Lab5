@@ -8,7 +8,7 @@ public class App {
     public static void main(String[] args) {
         Worker worker1 = new Worker(1, "Валентин", new Coordinates(34.9, 85.32),
                 java.time.LocalDate.now(), 8000, java.time.LocalDate.now(), Position.DEVELOPER,
-                Status.REGULAR, new Organization("Могилевлифтмаш", 450000, 143L,
+                Status.RECOMMENDED_FOR_PROMOTION, new Organization("Могилевлифтмаш", 450000, 143L,
                 new Address("Малочаевская ул.", "67852")));
         Worker worker2 = new Worker(1, "Валентин", new Coordinates(34.9, 85.32),
                 java.time.LocalDate.now(), 8000, java.time.LocalDate.now(), Position.DEVELOPER,
@@ -16,6 +16,6 @@ public class App {
                 new Address("Малочаевская ул.", "67852")));
         System.out.println(worker1);
         System.out.println(worker2);
-        System.out.println(worker1.equals(worker2));
+        System.out.println(worker1.compareTo(worker2));
     }
 }

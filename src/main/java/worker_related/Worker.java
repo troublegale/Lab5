@@ -3,7 +3,7 @@ package worker_related;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Worker {
+public class Worker implements Comparable<Worker> {
     private long id; // >0, auto-generated, unique
     private String name; // not null, not empty
     private Coordinates coordinates; // not null
@@ -66,5 +66,26 @@ public class Worker {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, coordinates, creationDate, salary, startDate, position, status, organization);
+    }
+    @Override
+    public int compareTo(Worker worker) {
+        if (this.position == Position.HEAD_OF_DEPARTMENT && worker.position != Position.HEAD_OF_DEPARTMENT) {
+            return 1;
+        }
+        if (this.position != Position.HEAD_OF_DEPARTMENT && worker.position == Position.HEAD_OF_DEPARTMENT) {
+            return -1;
+        }
+        if (this.status == Status.RECOMMENDED_FOR_PROMOTION && worker.status != Status.RECOMMENDED_FOR_PROMOTION) {
+            return 1;
+        }
+        if (this.status != Status.RECOMMENDED_FOR_PROMOTION && worker.status == Status.RECOMMENDED_FOR_PROMOTION) {
+            return -1;
+        }
+        if (this.salary > worker.salary) {
+            return 1;
+        } else if (this.salary < worker.salary) {
+            return -1;
+        }
+        return 0;
     }
 }

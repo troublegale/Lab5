@@ -15,6 +15,15 @@ public class Organization {
         this.postalAddress = postalAddress;
     }
 
+    public String getFullName() { return fullName; }
+    public void setFullName(String fullName) { this.fullName = fullName; }
+    public Integer getAnnualTurnover() { return annualTurnover; }
+    public void setAnnualTurnover(Integer annualTurnover) { this.annualTurnover = annualTurnover; }
+    public Long getEmployeesCount() { return employeesCount; }
+    public void setEmployeesCount(Long employeesCount) { this.employeesCount = employeesCount; }
+    public Address getPostalAddress() { return postalAddress; }
+    public void setPostalAddress(Address postalAddress) { this.postalAddress = postalAddress; }
+
     @Override
     public String toString() {
         return this.fullName + "(annualturnover=" + this.annualTurnover + "; employeecount=" + this.employeesCount +
