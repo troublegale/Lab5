@@ -33,4 +33,5 @@ public class CommandManager {
 
     public Map<String, Command> getCommandMap() { return commandMap; }
     public ArrayList<String> getKeyList() { return keyList; }
+    public boolean hasCommand(String string) { return keyList.contains(string); }
 }
