@@ -7,15 +7,15 @@ import java.util.HashMap;
 
 public class CollectionManager {
     private HashMap<Integer, Worker> workerMap;
-    private java.time.LocalDateTime creationDate;
+    private String creationDate;
 
-    public CollectionManager(HashMap<Integer, Worker> workerMap) {
+    public CollectionManager(HashMap<Integer, Worker> workerMap, String creationDate) {
         this.workerMap = workerMap;
-        creationDate = java.time.LocalDateTime.now();
+        this.creationDate = creationDate;
     }
 
     public HashMap<Integer, Worker> getWorkerMap() { return workerMap; }
     public void setWorkerMap(HashMap<Integer, Worker> workerMap) { this.workerMap = workerMap; }
-    public LocalDateTime getCreationDate() { return creationDate; }
-    public void setCreationDate(LocalDateTime creationDate) { this.creationDate = creationDate; }
+    public String getCreationDate() { return creationDate; }
+    public void setCreationDate(String creationDate) { this.creationDate = creationDate; }
 }

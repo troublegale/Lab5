@@ -1,13 +1,17 @@
 package commands;
 
+import worker_related.Worker;
+
+import java.util.Map;
+
 public class Help implements Command {
     @Override
-    public void execute() {
+    public Map<Integer, Worker> execute(Map<Integer, Worker> workerMap) {
 
     }
 
     @Override
-    public void type() {
+    public boolean requiresArgs() {
 
     }
 
