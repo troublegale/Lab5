@@ -1,27 +1,19 @@
 package commands;
 
-import worker_related.Worker;
-
-import java.util.Map;
+import managers.CollectionManager;
+import managers.CommandManager;
 
 public class Clear implements Command {
-    @Override
-    public Map<Integer, Worker> execute(Map<Integer, Worker> workerMap) {
+    public Clear(CollectionManager comMan) {
 
     }
 
     @Override
-    public boolean requiresArgs() {
+    public void execute() {
 
     }
-
     @Override
-    public String getName() {
-        return null;
-    }
-
+    public String name() { return "clear"; }
     @Override
-    public String getDescription() {
-        return null;
-    }
+    public String description() { return "clear the collection"; }
 }

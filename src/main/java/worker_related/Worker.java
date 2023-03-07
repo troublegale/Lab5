@@ -92,6 +92,6 @@ public class Worker implements Comparable<Worker> {
         } else if (this.salary < worker.salary) {
             return -1;
         }
-        return 0;
+        return Character.compare(this.name.charAt(0), worker.name.charAt(0));
     }
 }

@@ -1,27 +1,18 @@
 package commands;
 
-import worker_related.Worker;
-
-import java.util.Map;
+import managers.CollectionManager;
 
 public class Show implements Command {
-    @Override
-    public Map<Integer, Worker> execute(Map<Integer, Worker> workerMap) {
+    public Show(CollectionManager colMan) {
 
     }
 
     @Override
-    public boolean requiresArgs() {
+    public void execute() {
 
     }
-
     @Override
-    public String getName() {
-        return null;
-    }
-
+    public String name() { return "Show"; }
     @Override
-    public String getDescription() {
-        return null;
-    }
+    public String description() { return "print out all elements of the collection"; }
 }

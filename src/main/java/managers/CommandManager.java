@@ -9,24 +9,24 @@ public class CommandManager {
     private final Map<String, Command> commandMap;
     private final ArrayList<String> keyList;
 
-    public CommandManager() {
+    public CommandManager(CollectionManager colMan) {
         Map<String, Command> commandMap = new HashMap<>();
         commandMap.put("help", new Help());
-        commandMap.put("info", new Info());
-        commandMap.put("show", new Show());
-        commandMap.put("insert", new Insert());
-        commandMap.put("update", new Update());
-        commandMap.put("remove_key", new RemoveKey());
-        commandMap.put("clear", new Clear());
-        commandMap.put("save", new Save());
+        commandMap.put("info", new Info(colMan));
+        commandMap.put("show", new Show(colMan));
+        commandMap.put("insert", new Insert(colMan));
+        commandMap.put("update", new Update(colMan));
+        commandMap.put("remove_key", new RemoveKey(colMan));
+        commandMap.put("clear", new Clear(colMan));
+        commandMap.put("save", new Save(colMan));
         commandMap.put("execute_script", new ExecuteScript());
         commandMap.put("exit", new Exit());
         commandMap.put("history", new History());
-        commandMap.put("replace_if_lower", new ReplaceIfLower());
-        commandMap.put("remove_lower_key", new RemoveLowerKey());
-        commandMap.put("min_by_status", new MinByStatus());
-        commandMap.put("count_by_position", new CountByPosition());
-        commandMap.put("filter_greater_than_organization", new FilterGreaterThanOrganization());
+        commandMap.put("replace_if_lower", new ReplaceIfLower(colMan));
+        commandMap.put("remove_lower_key", new RemoveLowerKey(colMan));
+        commandMap.put("min_by_status", new MinByStatus(colMan));
+        commandMap.put("count_by_position", new CountByPosition(colMan));
+        commandMap.put("filter_greater_than_organization", new FilterGreaterThanOrganization(colMan));
         this.commandMap = commandMap;
         this.keyList = new ArrayList<>(commandMap.keySet());
     }

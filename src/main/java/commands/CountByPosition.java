@@ -1,27 +1,18 @@
 package commands;
 
-import worker_related.Worker;
-
-import java.util.Map;
+import managers.CollectionManager;
 
 public class CountByPosition implements Command {
-    @Override
-    public Map<Integer, Worker> execute(Map<Integer, Worker> workerMap) {
+    public CountByPosition(CollectionManager colMan) {
 
     }
 
     @Override
-    public boolean requiresArgs() {
+    public void execute() {
 
     }
-
     @Override
-    public String getName() {
-        return null;
-    }
-
+    public String name() { return "count_by_position {position(head_of_department, developer, manager_of_cleaning)}"; }
     @Override
-    public String getDescription() {
-        return null;
-    }
+    public String description() { return "print out the number of elements with Position field value equal to given"; }
 }
