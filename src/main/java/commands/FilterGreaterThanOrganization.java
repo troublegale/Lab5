@@ -1,27 +1,18 @@
 package commands;
 
-import worker_related.Worker;
-
-import java.util.Map;
+import managers.CollectionManager;
 
 public class FilterGreaterThanOrganization implements Command {
-    @Override
-    public Map<Integer, Worker> execute(Map<Integer, Worker> workerMap) {
+    public FilterGreaterThanOrganization(CollectionManager colMan) {
 
     }
 
     @Override
-    public boolean requiresArgs() {
+    public void execute() {
 
     }
-
     @Override
-    public String getName() {
-        return null;
-    }
-
+    public String name() { return "filter_greater_than_organization"; }
     @Override
-    public String getDescription() {
-        return null;
-    }
+    public String description() { return "print out elements with Organization value greater than given"; }
 }

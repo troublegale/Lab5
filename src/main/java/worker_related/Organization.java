@@ -26,8 +26,8 @@ public class Organization implements Comparable<Organization> {
 
     @Override
     public String toString() {
-        return this.fullName + "(annualturnover=" + this.annualTurnover + "; employeecount=" + this.employeesCount +
-                "; postaladdress=" + this.postalAddress + ")";
+        return this.fullName + "(annual_turnover=" + this.annualTurnover + "; employee_count=" + this.employeesCount +
+                "; postal_address=" + this.postalAddress + ")";
     }
     @Override
     public boolean equals(Object o) {

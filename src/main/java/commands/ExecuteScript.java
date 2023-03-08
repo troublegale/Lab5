@@ -1,27 +1,13 @@
 package commands;
 
-import worker_related.Worker;
-
-import java.util.Map;
-
 public class ExecuteScript implements Command {
-    @Override
-    public Map<Integer, Worker> execute(Map<Integer, Worker> workerMap) {
-
-    }
 
     @Override
-    public boolean requiresArgs() {
+    public void execute() {
 
     }
-
     @Override
-    public String getName() {
-        return null;
-    }
-
+    public String name() { return "execute_script {file_path}"; }
     @Override
-    public String getDescription() {
-        return null;
-    }
+    public String description() { return "execute the sequence of commands from a file"; }
 }
