@@ -8,11 +8,11 @@ public class Save implements Command {
     }
 
     @Override
-    public void execute() {
+    public void execute(String argument) {
 
     }
     @Override
     public String name() { return "save"; }
     @Override
-    public String description() { return "save the collection to workers.txt"; }
+    public String description() { return "save the collection to file"; }
 }

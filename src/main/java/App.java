@@ -1,17 +1,16 @@
-import commands.Command;
-import managers.CollectionManager;
-import managers.CommandManager;
+import managers.*;
 import worker_related.*;
 
 import java.time.LocalDate;
 import java.util.HashMap;
-import java.util.Map;
 
 public class App {
+
     public static void main(String[] args) {
-        CollectionManager colMan = new CollectionManager(tempWorkerMap(), "07.03.2023");
+        CollectionManager colMan = new CollectionManager(tempWorkerMap(), "08/03/23");
         CommandManager comMan = new CommandManager(colMan);
-        for (Worker w : colMan.getWorkerMap().values()) { System.out.println(w); }
+        UserInteractionManager uim = new UserInteractionManager(comMan);
+        uim.interact();
     }
 
     static HashMap<Integer, Worker> tempWorkerMap() {
@@ -43,4 +42,5 @@ public class App {
         map.put((int)five.getId(), five);
         return map;
     }
+
 }

@@ -1,7 +1,6 @@
 package commands;
 
 import managers.CollectionManager;
-import managers.CommandManager;
 
 public class Clear implements Command {
     public Clear(CollectionManager comMan) {
@@ -9,7 +8,7 @@ public class Clear implements Command {
     }
 
     @Override
-    public void execute() {
+    public void execute(String argument) {
 
     }
     @Override

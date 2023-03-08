@@ -8,7 +8,7 @@ public class RemoveKey implements Command {
     }
 
     @Override
-    public void execute() {
+    public void execute(String argument) {
 
     }
     @Override
