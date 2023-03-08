@@ -5,8 +5,6 @@ import java.util.Scanner;
 public class UserInteractionManager {
     private final Scanner scanner = new Scanner(System.in);
     private CommandManager comMan;
-    private final int historyLength = 6;
-    private String[] history = new String[historyLength];
 
     public UserInteractionManager (CommandManager comMan) {
         this.comMan = comMan;
@@ -32,6 +30,7 @@ public class UserInteractionManager {
                     comMan.setArgument("");
                 }
                 comMan.handleCommand(command);
+
             }
         }
     }
@@ -44,9 +43,4 @@ public class UserInteractionManager {
         }
     }
 
-    private void storeCommand(String command) {
-
-    }
-
-    public String[] getHistory() { return history; }
 }
