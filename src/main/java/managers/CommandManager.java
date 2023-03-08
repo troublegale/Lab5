@@ -8,10 +8,10 @@ import java.util.Map;
 public class CommandManager {
     private final Map<String, Command> commandMap;
     private final ArrayList<String> keyList;
+    private String argument;
 
     public CommandManager(CollectionManager colMan) {
         Map<String, Command> commandMap = new HashMap<>();
-        commandMap.put("help", new Help());
         commandMap.put("info", new Info(colMan));
         commandMap.put("show", new Show(colMan));
         commandMap.put("insert", new Insert(colMan));
@@ -27,11 +27,19 @@ public class CommandManager {
         commandMap.put("min_by_status", new MinByStatus(colMan));
         commandMap.put("count_by_position", new CountByPosition(colMan));
         commandMap.put("filter_greater_than_organization", new FilterGreaterThanOrganization(colMan));
+        commandMap.put("test", new Test());
+        commandMap.put("help", new Help(new ArrayList<>(commandMap.values())));
         this.commandMap = commandMap;
         this.keyList = new ArrayList<>(commandMap.keySet());
     }
 
+    public String getArgument() {return argument; }
+    public void setArgument(String argument) { this.argument = argument; }
     public Map<String, Command> getCommandMap() { return commandMap; }
     public ArrayList<String> getKeyList() { return keyList; }
     public boolean hasCommand(String string) { return keyList.contains(string); }
+
+    public void handleCommand(String command) {
+        commandMap.get(command).execute(argument);
+    }
 }
