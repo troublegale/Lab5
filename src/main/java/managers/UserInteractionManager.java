@@ -31,9 +31,9 @@ public class UserInteractionManager {
                 } else {
                     comMan.setArgument("");
                 }
+                comMan.handleCommand(command);
             }
         }
-        comMan.handleCommand(command);
     }
 
     public void interact() {
