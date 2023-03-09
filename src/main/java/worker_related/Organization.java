@@ -9,7 +9,7 @@ public class Organization implements Comparable<Organization> {
     private Address postalAddress; // not null
 
     public Organization(String fullName, Integer annualTurnover, Long employeesCount, Address postalAddress) {
-        this. fullName = fullName;
+        this.fullName = fullName;
         this.annualTurnover = annualTurnover;
         this.employeesCount = employeesCount;
         this.postalAddress = postalAddress;
