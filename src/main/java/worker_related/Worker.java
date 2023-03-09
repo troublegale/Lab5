@@ -1,6 +1,7 @@
 package worker_related;
 
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.Objects;
 
 public class Worker implements Comparable<Worker> {
@@ -26,6 +27,7 @@ public class Worker implements Comparable<Worker> {
         this.status = status;
         this.organization = organization;
     }
+
 
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }

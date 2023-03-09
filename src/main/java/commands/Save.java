@@ -9,7 +9,8 @@ public class Save implements Command {
 
     @Override
     public void execute(Object argument) {
-
+        System.out.println("Saving...");
+        System.out.println("Successfully saved.");
     }
     @Override
     public String name() { return "save"; }

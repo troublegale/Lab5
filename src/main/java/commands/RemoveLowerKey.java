@@ -3,8 +3,9 @@ package commands;
 import managers.CollectionManager;
 
 public class RemoveLowerKey implements Command {
+    CollectionManager colMan;
     public RemoveLowerKey(CollectionManager colMan) {
-
+        this.colMan = colMan;
     }
 
     @Override

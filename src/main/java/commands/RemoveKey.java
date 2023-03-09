@@ -1,9 +1,11 @@
 package commands;
 
 import managers.CollectionManager;
+import worker_related.Worker;
 
 public class RemoveKey implements Command {
     private CollectionManager colMan;
+
     public RemoveKey(CollectionManager colMan) {
         this.colMan = colMan;
     }
@@ -11,14 +13,33 @@ public class RemoveKey implements Command {
     @Override
     public void execute(Object argument) {
         Integer key = (Integer) argument;
-        colMan.getWorkerMap();
+        for (Worker worker : colMan.getWorkerMap().values()) {
+            if (worker.getId() == key) {
+                colMan.getWorkerMap().values().remove(worker);
+                System.out.println("Collection element with key " + key + "has been successfully deleted.");
+            } else {
+                System.out.println("There is no collection element with such a key");
+            }
+        }
     }
+
     @Override
-    public String name() { return "remove_key"; }
+    public String name() {
+        return "remove_key";
+    }
+
     @Override
-    public String arg() { return "{key(integer value)}"; }
+    public String arg() {
+        return "{key(integer value)}";
+    }
+
     @Override
-    public String description() { return "delete an element with the given key from the collection"; }
+    public String description() {
+        return "delete an element with the given key from the collection";
+    }
+
     @Override
-    public String argType() { return "int"; }
+    public String argType() {
+        return "int";
+    }
 }

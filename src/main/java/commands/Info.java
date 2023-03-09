@@ -3,13 +3,16 @@ package commands;
 import managers.CollectionManager;
 
 public class Info implements Command {
+    CollectionManager colMan;
     public Info(CollectionManager colMan) {
-
+        this.colMan = colMan;
     }
 
     @Override
     public void execute(Object argument) {
-
+        System.out.println("Collection type is " + colMan.getWorkerMap().getClass().toString() + ".");
+        System.out.println("Initialization date is " + colMan.getCreationDate() + ".");
+        System.out.println("Number of elements is " + colMan.getWorkerMap().size());
     }
     @Override
     public String name() { return "info"; }

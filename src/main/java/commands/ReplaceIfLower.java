@@ -1,10 +1,12 @@
 package commands;
 
 import managers.CollectionManager;
+import worker_related.Worker;
 
 public class ReplaceIfLower implements Command {
+    CollectionManager colMan;
     public ReplaceIfLower(CollectionManager colMan) {
-
+        this.colMan = colMan;
     }
 
     @Override
