@@ -8,11 +8,15 @@ public class MinByStatus implements Command {
     }
 
     @Override
-    public void execute(String argument) {
+    public void execute(Object argument) {
 
     }
     @Override
     public String name() { return "min_by_status"; }
     @Override
+    public String arg() { return ""; }
+    @Override
     public String description() { return "print out all elements with the lowest Status field value"; }
+    @Override
+    public String argType() { return ""; }
 }

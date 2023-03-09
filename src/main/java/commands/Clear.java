@@ -8,11 +8,15 @@ public class Clear implements Command {
     }
 
     @Override
-    public void execute(String argument) {
+    public void execute(Object argument) {
 
     }
     @Override
     public String name() { return "clear"; }
     @Override
+    public String arg() { return ""; }
+    @Override
     public String description() { return "clear the collection"; }
+    @Override
+    public String argType() { return ""; }
 }

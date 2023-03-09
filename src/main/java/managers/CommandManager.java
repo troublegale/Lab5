@@ -8,7 +8,7 @@ import java.util.Map;
 public class CommandManager {
     private final Map<String, Command> commandMap;
     private final ArrayList<String> keyList;
-    private String argument;
+    private Object argument;
 
     public CommandManager(CollectionManager colMan) {
         Map<String, Command> commandMap = new HashMap<>();
@@ -33,13 +33,41 @@ public class CommandManager {
         this.keyList = new ArrayList<>(commandMap.keySet());
     }
 
-    public String getArgument() {return argument; }
+    public Object getArgument() {return argument; }
     public void setArgument(String argument) { this.argument = argument; }
     public Map<String, Command> getCommandMap() { return commandMap; }
     public ArrayList<String> getKeyList() { return keyList; }
     public boolean hasCommand(String string) { return keyList.contains(string); }
 
     public void handleCommand(String command) {
-        commandMap.get(command).execute(argument);
+        Command currentCommand = commandMap.get(command);
+        if (currentCommand.argType().equals("")) {
+            currentCommand.execute(argument);
+        } else {
+            if (argument.equals("")) {
+                System.out.println("Command '" + currentCommand.name() + "' requires an argument.");
+            } else {
+                switch (currentCommand.argType()) {
+                    case "int" -> {
+                        try {
+                            argument = Integer.parseInt(argument.toString());
+                            currentCommand.execute(argument);
+
+                        } catch (NumberFormatException e) {
+                            System.out.println("Wrong argument for '" + currentCommand.name() + "' - an integer value required.");
+                        }
+                    }
+                    case "long" -> {
+                        try {
+                            argument = Long.parseLong(argument.toString());
+                        } catch (NumberFormatException e) {
+                            System.out.println("Wrong argument for '" + currentCommand.name() + "' - a long value required.");
+                        }
+                    }
+//                    case ""
+                }
+            }
+        }
+
     }
 }

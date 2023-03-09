@@ -1,7 +1,9 @@
 package commands;
 
 public interface Command {
-    public void execute(String argument);
-    public String name();
-    public String description();
+    void execute(Object argument);
+    String name();
+    String arg();
+    String description();
+    String argType();
 }

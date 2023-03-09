@@ -8,11 +8,15 @@ public class Insert implements Command {
     }
 
     @Override
-    public void execute(String argument) {
+    public void execute(Object argument) {
 
     }
     @Override
-    public String name() { return "insert {key(integer value)}"; }
+    public String name() { return "insert"; }
+    @Override
+    public String arg() { return "{key(integer value)}"; }
     @Override
     public String description() { return "add a new element to the collection using the given key"; }
+    @Override
+    public String argType() { return "int"; }
 }
