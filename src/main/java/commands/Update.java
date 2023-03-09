@@ -8,11 +8,15 @@ public class Update implements Command {
     }
 
     @Override
-    public void execute(String argument) {
+    public void execute(Object argument) {
 
     }
     @Override
-    public String name() { return "update {id(long value)}"; }
+    public String name() { return "update"; }
+    @Override
+    public String arg() { return "{id(long value)}"; }
     @Override
     public String description() { return "update an element with the given id field value"; }
+    @Override
+    public String argType() { return "long"; }
 }

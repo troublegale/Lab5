@@ -1,5 +1,7 @@
 package managers;
 
+import exceptions.ExitException;
+
 import java.util.Scanner;
 
 public class UserInteractionManager {
@@ -39,7 +41,13 @@ public class UserInteractionManager {
         start();
         while (true) {
             System.out.print("> ");
-            handleInput();
+            try {
+                handleInput();
+            } catch (ExitException e) {
+                System.out.println("Any changes past the last 'save' command were not saved.");
+                System.out.println("Shutting down...");
+                break;
+            }
         }
     }
 
