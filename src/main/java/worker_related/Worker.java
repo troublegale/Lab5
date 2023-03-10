@@ -29,24 +29,77 @@ public class Worker implements Comparable<Worker> {
     }
 
 
-    public long getId() { return id; }
-    public void setId(long id) { this.id = id; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public Coordinates getCoordinates() { return coordinates; }
-    public void setCoordinates(Coordinates coordinates) { this.coordinates = coordinates; }
-    public LocalDate getCreationDate() { return creationDate; }
-    public void setCreationDate(LocalDate creationDate) { this.creationDate = creationDate; }
-    public int getSalary() { return salary; }
-    public void setSalary(int salary) { this.salary = salary; }
-    public LocalDate getStartDate()  {return startDate; }
-    public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
-    public Position getPosition() { return position; }
-    public void setPosition(Position position) { this.position = position; }
-    public Status getStatus() { return status; }
-    public void setStatus(Status status) { this.status = status; }
-    public Organization getOrganization() { return organization; }
-    public void setOrganization(Organization organization) { this.organization = organization; }
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
+    }
 
     @Override
     public String toString() {
@@ -55,6 +108,7 @@ public class Worker implements Comparable<Worker> {
                 startDate + "; position=" + position + "; status=" + status + ";\norganization=" +
                 organization + ")";
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -65,10 +119,12 @@ public class Worker implements Comparable<Worker> {
                 startDate.equals(worker.startDate) && position == worker.position &&
                 status == worker.status && Objects.equals(organization, worker.organization);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(id, name, coordinates, creationDate, salary, startDate, position, status, organization);
     }
+
     @Override
     public int compareTo(Worker worker) {
         if (this.status == Status.FIRED && worker.status != Status.FIRED) {
@@ -93,6 +149,15 @@ public class Worker implements Comparable<Worker> {
             return 1;
         } else if (this.salary < worker.salary) {
             return -1;
+        }
+        try {
+            if (this.organization.compareTo(worker.organization) > 0) {
+                return 1;
+            } else if (this.organization.compareTo(worker.organization) < 0) {
+                return -1;
+            }
+        } catch (NullPointerException e) {
+            System.out.println("One (both) of the Workers' organizations is (are) null, thus organization field will not participate in the comparison.");
         }
         return Character.compare(this.name.charAt(0), worker.name.charAt(0));
     }
