@@ -15,21 +15,18 @@ public class CountByPosition implements Command {
 
     @Override
     public void execute(Object argument) {
-        if (colMan.getWorkerMap().isEmpty()){
-            System.out.println("This collection is empty.");
-            return;
+        Position position = (Position) argument;
+        int count = 0;
+        for (Worker w : colMan.getWorkerMap().values()) {
+            if (w.getPosition() == argument) {
+                count++;
+            }
         }
-        Position position;
-        try {
-            position = Position.valueOf(argument.toString().toUpperCase());
-        } catch (IllegalArgumentException e) {
-            System.out.println("Invalid position value. Allowed values: HEAD_OF_DEPARTMENT, DEVELOPER, MANAGER_OF_CLEANING");
-            return;
+        if (count == 0) {
+            System.out.println("The collection doesn't contain elements with such position value.");
+        } else {
+            System.out.println("The collection contains " + count + " element(s) with position = " + argument + ".");
         }
-
-        Map<Long, Worker> workerMap = colMan.getWorkerMap();
-        long count = workerMap.values().stream().filter(worker -> worker.getPosition() == position).count();
-        System.out.println("Number of elements with Position field equal to " + position + ": " + count);
     }
 
     @Override

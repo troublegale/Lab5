@@ -12,7 +12,7 @@ public class Info implements Command {
     public void execute(Object argument) {
         System.out.println("Collection stores Workers.");
         System.out.println("Collection's initialization date is " + colMan.getCreationDate() + ".");
-        System.out.println("The number of elements is " + colMan.getWorkerMap().size());
+        System.out.println("The number of elements is " + colMan.getWorkerMap().size() + ".");
         System.out.println("The collection keys are the same as the Workers' id's.");
     }
     @Override

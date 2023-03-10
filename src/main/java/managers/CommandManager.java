@@ -78,7 +78,7 @@ public class CommandManager {
                     }
                     case "position" -> {
                         try {
-                            argument = Position.valueOf(argument.toString());
+                            argument = Position.valueOf(argument.toString().toUpperCase());
                             currentCommand.execute(argument);
                             history.add(currentCommand.name());
                         } catch (IllegalArgumentException e) {
@@ -87,7 +87,7 @@ public class CommandManager {
                     }
                     case "status" -> {
                         try {
-                            argument = Status.valueOf(argument.toString());
+                            argument = Status.valueOf(argument.toString().toUpperCase());
                             currentCommand.execute(argument);
                             history.add(currentCommand.name());
                         } catch (IllegalArgumentException e) {
@@ -97,6 +97,8 @@ public class CommandManager {
                 }
             }
         }
-
+        if (history.size() > 6) {
+            history.remove(0);
+        }
     }
 }
