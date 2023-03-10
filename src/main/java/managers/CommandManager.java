@@ -41,11 +41,25 @@ public class CommandManager {
         this.keyList = new ArrayList<>(commandMap.keySet());
     }
 
-    public Object getArgument() {return argument; }
-    public void setArgument(String argument) { this.argument = argument; }
-    public Map<String, Command> getCommandMap() { return commandMap; }
-    public ArrayList<String> getKeyList() { return keyList; }
-    public boolean hasCommand(String string) { return keyList.contains(string); }
+    public Object getArgument() {
+        return argument;
+    }
+
+    public void setArgument(String argument) {
+        this.argument = argument;
+    }
+
+    public Map<String, Command> getCommandMap() {
+        return commandMap;
+    }
+
+    public ArrayList<String> getKeyList() {
+        return keyList;
+    }
+
+    public boolean hasCommand(String string) {
+        return keyList.contains(string);
+    }
 
     public void handleCommand(String command) {
         Command currentCommand = commandMap.get(command);
@@ -78,7 +92,7 @@ public class CommandManager {
                     }
                     case "position" -> {
                         try {
-                            argument = Position.valueOf(argument.toString());
+                            argument = Position.valueOf(argument.toString().toUpperCase());
                             currentCommand.execute(argument);
                             history.add(currentCommand.name());
                         } catch (IllegalArgumentException e) {
@@ -87,7 +101,7 @@ public class CommandManager {
                     }
                     case "status" -> {
                         try {
-                            argument = Status.valueOf(argument.toString());
+                            argument = Status.valueOf(argument.toString().toUpperCase());
                             currentCommand.execute(argument);
                             history.add(currentCommand.name());
                         } catch (IllegalArgumentException e) {
@@ -97,6 +111,8 @@ public class CommandManager {
                 }
             }
         }
-
+        if (history.size() > 6) {
+            history.remove(0);
+        }
     }
 }

@@ -10,6 +10,7 @@ import java.util.Objects;
 
 public class FilterGreaterThanOrganization implements Command {
     CollectionManager colMan;
+
     public FilterGreaterThanOrganization(CollectionManager colMan) {
         this.colMan = colMan;
     }
@@ -36,12 +37,24 @@ public class FilterGreaterThanOrganization implements Command {
             System.out.println("Description canceled.");
         }
     }
+
     @Override
-    public String name() { return "filter_greater_than_organization"; }
+    public String name() {
+        return "filter_greater_than_organization";
+    }
+
     @Override
-    public String arg() { return ""; }
+    public String arg() {
+        return "";
+    }
+
     @Override
-    public String description() { return "print out elements with Organization value greater than given"; }
+    public String description() {
+        return "print out elements with Organization value greater than given";
+    }
+
     @Override
-    public String argType() { return ""; }
+    public String argType() {
+        return "";
+    }
 }

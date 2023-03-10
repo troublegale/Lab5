@@ -6,13 +6,14 @@ import worker_related.Worker;
 
 public class Insert implements Command {
     CollectionManager colMan;
+
     public Insert(CollectionManager colMan) {
         this.colMan = colMan;
     }
 
     @Override
     public void execute(Object argument) {
-        if (colMan.getWorkerMap().isEmpty()){
+        if (colMan.getWorkerMap().isEmpty()) {
             System.out.println("This collection is empty.");
             return;
         }
@@ -31,12 +32,24 @@ public class Insert implements Command {
             System.out.println("The collection already contains an element with such key.");
         }
     }
+
     @Override
-    public String name() { return "insert"; }
+    public String name() {
+        return "insert";
+    }
+
     @Override
-    public String arg() { return "{key(long value)}"; }
+    public String arg() {
+        return "{key(long value)}";
+    }
+
     @Override
-    public String description() { return "add a new element to the collection using the given key"; }
+    public String description() {
+        return "add a new element to the collection using the given key";
+    }
+
     @Override
-    public String argType() { return "long"; }
+    public String argType() {
+        return "long";
+    }
 }

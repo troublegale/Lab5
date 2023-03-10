@@ -6,13 +6,14 @@ import worker_related.Worker;
 
 public class ReplaceIfLower implements Command {
     CollectionManager colMan;
+
     public ReplaceIfLower(CollectionManager colMan) {
         this.colMan = colMan;
     }
 
     @Override
     public void execute(Object argument) {
-        if (colMan.getWorkerMap().isEmpty()){
+        if (colMan.getWorkerMap().isEmpty()) {
             System.out.println("This collection is empty.");
             return;
         }
@@ -35,12 +36,24 @@ public class ReplaceIfLower implements Command {
             }
         }
     }
+
     @Override
-    public String name() { return "replace_if_lower"; }
+    public String name() {
+        return "replace_if_lower";
+    }
+
     @Override
-    public String arg() { return "{key(long value)}"; }
+    public String arg() {
+        return "{key(long value)}";
+    }
+
     @Override
-    public String description() { return "replace an element with the given key if the newly described element is lower than the current"; }
+    public String description() {
+        return "replace an element with the given key if the newly described element is lower than the current";
+    }
+
     @Override
-    public String argType() { return "long"; }
+    public String argType() {
+        return "long";
+    }
 }

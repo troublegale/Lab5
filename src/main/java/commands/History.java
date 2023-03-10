@@ -8,25 +8,36 @@ public class History implements Command {
     public History(ArrayList<String> history) {
         this.history = history;
     }
+
     @Override
     public void execute(Object argument) {
         int historyLength = history.size();
-        if (historyLength <= 6) {
-            for (String s : history) {
-                System.out.println(s);
-            }
-        } else {
-            for (int i = historyLength - 6; i <= historyLength - 1; i++) {
-                System.out.println(history.get(i));
-            }
+        if (historyLength == 0) {
+            System.out.println("History is yet empty.");
+            return;
+        }
+        for (String s : history) {
+            System.out.println(s);
         }
     }
+
     @Override
-    public String name() { return "history"; }
+    public String name() {
+        return "history";
+    }
+
     @Override
-    public String arg() { return ""; }
+    public String arg() {
+        return "";
+    }
+
     @Override
-    public String description() { return "print out 6 last executed commands"; }
+    public String description() {
+        return "print out 6 last executed commands";
+    }
+
     @Override
-    public String argType() { return ""; }
+    public String argType() {
+        return "";
+    }
 }

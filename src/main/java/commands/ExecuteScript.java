@@ -6,12 +6,24 @@ public class ExecuteScript implements Command {
     public void execute(Object argument) {
 
     }
+
     @Override
-    public String name() { return "execute_script"; }
+    public String name() {
+        return "execute_script";
+    }
+
     @Override
-    public String arg() { return "{file_path}"; }
+    public String arg() {
+        return "{file_path}";
+    }
+
     @Override
-    public String description() { return "execute the sequence of commands from a file"; }
+    public String description() {
+        return "execute the sequence of commands from a file";
+    }
+
     @Override
-    public String argType() { return "filepath"; }
+    public String argType() {
+        return "filepath";
+    }
 }

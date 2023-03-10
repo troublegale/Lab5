@@ -1,11 +1,11 @@
 package managers;
 
-import commands.History;
 import exceptions.ExitException;
 import exceptions.SkipInputException;
 import exceptions.WrongInputFormatException;
 import worker_related.Position;
 import worker_related.Status;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
@@ -14,9 +14,7 @@ public class UserInteractionManager {
     private final Scanner scanner = new Scanner(System.in);
     private CommandManager comMan;
 
-
-
-    public UserInteractionManager (CommandManager comMan) {
+    public UserInteractionManager(CommandManager comMan) {
         this.comMan = comMan;
     }
 
@@ -40,6 +38,7 @@ public class UserInteractionManager {
                     comMan.setArgument("");
                 }
                 comMan.handleCommand(command);
+
             }
         }
     }
@@ -84,8 +83,9 @@ public class UserInteractionManager {
                 throw new WrongInputFormatException();
             }
         }
-        try { return Integer.parseInt(input); }
-        catch (NumberFormatException e) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
             System.out.println("Please, enter a proper integer value.");
             throw new WrongInputFormatException();
         }
@@ -117,8 +117,9 @@ public class UserInteractionManager {
                 throw new WrongInputFormatException();
             }
         }
-        try { return Long.parseLong(input); }
-        catch (NumberFormatException e) {
+        try {
+            return Long.parseLong(input);
+        } catch (NumberFormatException e) {
             System.out.println("Please, enter a proper long value.");
             throw new WrongInputFormatException();
         }
@@ -150,8 +151,9 @@ public class UserInteractionManager {
                 throw new WrongInputFormatException();
             }
         }
-        try { return Double.parseDouble(input); }
-        catch (NumberFormatException e) {
+        try {
+            return Double.parseDouble(input);
+        } catch (NumberFormatException e) {
             System.out.println("Please, enter a proper double precision value.");
             throw new WrongInputFormatException();
         }
@@ -165,13 +167,16 @@ public class UserInteractionManager {
         if (input.trim().equalsIgnoreCase("/skip")) {
             throw new SkipInputException();
         }
-        if (input.equalsIgnoreCase("null")) { return null; }
+        if (input.equalsIgnoreCase("null")) {
+            return null;
+        }
         if (input.equals("")) {
             System.out.println("Default status (" + Position.defaultPosition() + ") was used.");
             return Position.defaultPosition();
         }
-        try { return Position.valueOf(input.toUpperCase()); }
-        catch (IllegalArgumentException e) {
+        try {
+            return Position.valueOf(input.toUpperCase());
+        } catch (IllegalArgumentException e) {
             System.out.println("Please, enter a proper Position value.");
             throw new WrongInputFormatException();
         }
@@ -185,13 +190,16 @@ public class UserInteractionManager {
         if (input.trim().equalsIgnoreCase("/skip")) {
             throw new SkipInputException();
         }
-        if (input.equalsIgnoreCase("null")) { return null; }
+        if (input.equalsIgnoreCase("null")) {
+            return null;
+        }
         if (input.equals("")) {
             System.out.println("Default status (" + Status.defaultStatus() + ") was used.");
             return Status.defaultStatus();
         }
-        try { return Status.valueOf(input.toUpperCase()); }
-        catch (IllegalArgumentException e) {
+        try {
+            return Status.valueOf(input.toUpperCase());
+        } catch (IllegalArgumentException e) {
             System.out.println("Please, enter a proper Status value.");
             throw new WrongInputFormatException();
         }
@@ -213,8 +221,9 @@ public class UserInteractionManager {
             System.out.println("Current date was used.");
             return LocalDate.now();
         }
-        try { return LocalDate.parse(input); }
-        catch (DateTimeParseException e) {
+        try {
+            return LocalDate.parse(input);
+        } catch (DateTimeParseException e) {
             System.out.println("Please, enter the date in a proper format.");
             throw new WrongInputFormatException();
         }
