@@ -1,12 +1,10 @@
 package managers;
 
-import commands.Exit;
 import exceptions.ExitException;
 import exceptions.SkipInputException;
 import exceptions.WrongInputFormatException;
 import worker_related.Position;
 import worker_related.Status;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
