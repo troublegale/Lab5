@@ -1,6 +1,9 @@
 package commands;
 
+import exceptions.ExitException;
 import managers.CollectionManager;
+import managers.UserInteractionManager;
+import worker_related.*;
 
 public class Update implements Command {
 
@@ -18,9 +21,13 @@ public class Update implements Command {
         } else {
             System.out.println("To skip input and keep the old value of the field, use '/skip'.");
             System.out.println("To exit the updating sequence without saving, use '/exit'.");
-            colMan.getWorkerMap().replace(updatingID, colMan.createNewWorker(updatingID));
-            System.out.println("Worker with id = " + updatingID + " has been updated. Now it looks like this:");
-            System.out.println(colMan.getWorkerMap().get(updatingID));
+            try {
+                colMan.getWorkerMap().replace(updatingID, colMan.workerForReplacement(updatingID));
+                System.out.println("Worker with id = " + updatingID + " has been updated. Now it looks like this:");
+                System.out.println(colMan.getWorkerMap().get(updatingID));
+            } catch (ExitException e) {
+                System.out.println("Update canceled.");
+            }
         }
     }
 
