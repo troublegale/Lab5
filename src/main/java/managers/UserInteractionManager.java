@@ -1,5 +1,6 @@
 package managers;
 
+import commands.History;
 import exceptions.ExitException;
 import exceptions.SkipInputException;
 import exceptions.WrongInputFormatException;
@@ -12,6 +13,8 @@ import java.util.Scanner;
 public class UserInteractionManager {
     private final Scanner scanner = new Scanner(System.in);
     private CommandManager comMan;
+
+
 
     public UserInteractionManager (CommandManager comMan) {
         this.comMan = comMan;
@@ -37,7 +40,6 @@ public class UserInteractionManager {
                     comMan.setArgument("");
                 }
                 comMan.handleCommand(command);
-
             }
         }
     }

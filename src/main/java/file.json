@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Mark",
+    "position": "HEAD_OF_DEPARTMENT",
+    "status": "REGULAR",
+    "salary": 50000,
+    "coordinates": [1.0, 1],
+    "creationDate": "2023-02-24",
+    "id": "3425",
+    "organization": {
+      "fullName" : "Abcde",
+      "annualTurnover" : 333,
+      "employeesCount" : 43,
+      "postalAddress" : {
+        "street" : "Somewhere there",
+        "zipCode" : "zzzip"
+      }
+    }
+  },
+  {
+    "name": "Jack",
+    "position": "DEVELOPER",
+    "salary": 838388,
+    "coordinates": [10.1, 312],
+    "creationDate": "2023-02-24"
+  },
+  {
+    "id": 1,
+    "name": "One",
+    "coordinates": [1,2],
+    "creationDate": "2023-03-11",
+    "salary": 123,
+    "startDate": "2023-03-11",
+    "position": "DEVELOPER",
+    "status": "HIRED",
+    "organization": ["Company", 150000, 200, "Street", "1111"]
+  },
+  {
+    "id": 2,
+    "name": "Two",
+    "coordinates": [2,3],
+    "creationDate": "2023-03-11",
+    "salary": 234,
+    "startDate": "2023-03-11",
+    "position": "DEVELOPER",
+    "status": "FIRED",
+    "organization": ["Company12", 15220000, 2020, "Street2", "12111"]
+  },
+  {
+    "id": 3,
+    "name": "Three",
+    "coordinates": [3,4],
+    "creationDate": "2023-03-11",
+    "salary": 345,
+    "startDate": "2023-03-11",
+    "position": "MANAGER_OF_CLEANING",
+    "status": "REGULAR",
+    "organization": ["Compa33ny", 1500030, 2003, "Stre3et", "133111"]
+  },
+  {
+    "id": 4,
+    "name": "Four",
+    "coordinates": [4,5],
+    "creationDate": "2023-03-11",
+    "salary": 456,
+    "startDate": "2023-03-11",
+    "position": "HEAD_OF_DEPARTMENT",
+    "status": "RECOMMENDED_FOR_PROMOTION",
+    "organization": ["Companw2y", 15430000, 20430, "St43reet", "111431"]
+  },
+  {
+    "id": 5,
+    "name": "Five",
+    "coordinates": [5,6],
+    "creationDate": "2023-03-11",
+    "salary": 567,
+    "startDate": "2023-03-11",
+    "position": "DEVELOPER",
+    "status": "REGULAR",
+    "organization": ["4555Company", 15005500, 25500, "St55reet", "111551"]
+  }
+]
