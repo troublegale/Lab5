@@ -11,6 +11,10 @@ public class Clear implements Command {
 
     @Override
     public void execute(Object argument) {
+        if (colMan.getWorkerMap().isEmpty()){
+            System.out.println("This collection is empty.");
+            return;
+        }
         colMan.getWorkerMap().clear();
         System.out.println("Collection has been cleared.");
     }

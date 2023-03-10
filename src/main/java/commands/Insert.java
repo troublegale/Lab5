@@ -12,6 +12,10 @@ public class Insert implements Command {
 
     @Override
     public void execute(Object argument) {
+        if (colMan.getWorkerMap().isEmpty()){
+            System.out.println("This collection is empty.");
+            return;
+        }
         Long key = (Long) argument;
         if (!colMan.getWorkerMap().containsKey(key)) {
             System.out.println("Inserting a new element under the key = " + key + ".");

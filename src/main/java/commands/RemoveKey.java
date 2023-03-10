@@ -12,6 +12,10 @@ public class RemoveKey implements Command {
 
     @Override
     public void execute(Object argument) {
+        if (colMan.getWorkerMap().isEmpty()){
+            System.out.println("This collection is empty.");
+            return;
+        }
         Long key = (Long) argument;
         for (Worker worker : colMan.getWorkerMap().values()) {
             if (worker.getId() == key) {

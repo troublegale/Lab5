@@ -10,6 +10,10 @@ public class RemoveLowerKey implements Command {
 
     @Override
     public void execute(Object argument) {
+        if (colMan.getWorkerMap().isEmpty()){
+            System.out.println("This collection is empty.");
+            return;
+        }
         if (argument == null) {
             System.out.println("Key is not specified.");
             return;

@@ -15,6 +15,10 @@ public class Update implements Command {
 
     @Override
     public void execute(Object argument) {
+        if (colMan.getWorkerMap().isEmpty()){
+            System.out.println("This collection is empty.");
+            return;
+        }
         long updatingID = (long) argument;
         if (!colMan.getWorkerMap().containsKey(updatingID)) {
             System.out.println("The collection doesn't contain an element with such id.");

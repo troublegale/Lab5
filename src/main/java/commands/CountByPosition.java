@@ -15,6 +15,10 @@ public class CountByPosition implements Command {
 
     @Override
     public void execute(Object argument) {
+        if (colMan.getWorkerMap().isEmpty()){
+            System.out.println("This collection is empty.");
+            return;
+        }
         Position position;
         try {
             position = Position.valueOf(argument.toString().toUpperCase());
