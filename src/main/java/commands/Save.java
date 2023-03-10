@@ -1,15 +1,22 @@
 package commands;
 
 import managers.CollectionManager;
+import managers.FileManager;
+
+import java.io.File;
 
 public class Save implements Command {
-    public Save(CollectionManager colMan) {
-
+    CollectionManager colMan;
+    FileManager fileManager;
+    public Save(CollectionManager colMan, FileManager fileManager) {
+        this.colMan = colMan;
+        this.fileManager = fileManager;
     }
 
     @Override
     public void execute(Object argument) {
         System.out.println("Saving...");
+        fileManager.writeWorkersToFile(colMan);
         System.out.println("Successfully saved.");
     }
     @Override

@@ -10,7 +10,7 @@ public class CommandManager {
     private final ArrayList<String> keyList;
     private Object argument;
 
-    public CommandManager(CollectionManager colMan) {
+    public CommandManager(CollectionManager colMan, FileManager fileManager) {
         Map<String, Command> commandMap = new HashMap<>();
         commandMap.put("info", new Info(colMan));
         commandMap.put("show", new Show(colMan));
@@ -18,7 +18,7 @@ public class CommandManager {
         commandMap.put("update", new Update(colMan));
         commandMap.put("remove_key", new RemoveKey(colMan));
         commandMap.put("clear", new Clear(colMan));
-        commandMap.put("save", new Save(colMan));
+        commandMap.put("save", new Save(colMan,fileManager);
         commandMap.put("execute_script", new ExecuteScript());
         commandMap.put("exit", new Exit());
         commandMap.put("history", new History());
