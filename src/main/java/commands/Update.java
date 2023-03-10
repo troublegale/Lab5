@@ -20,11 +20,14 @@ public class Update implements Command {
     @Override
     public void execute(Object argument) {
         long updatingID = (long) argument;
-        if (!colMan.getWorkerMap().keySet().contains(updatingID)) {
+        if (!colMan.getWorkerMap().containsKey(updatingID)) {
             System.out.println("The collection doesn't contain an element with such id.");
         } else {
-            colMan.getWorkerMap().replace(updatingID, CollectionManager.createNewWorker(updatingID));
-            System.out.println("Worker with id = " + updatingID + " has been updated.");
+            System.out.println("To skip input and keep the old value of the field, use '/skip'.");
+            System.out.println("To exit the updating sequence without saving, use '/exit'.");
+            colMan.getWorkerMap().replace(updatingID, colMan.createNewWorker(updatingID));
+            System.out.println("Worker with id = " + updatingID + " has been updated. Now it looks like this:");
+            System.out.println(colMan.getWorkerMap().get(updatingID));
         }
     }
 

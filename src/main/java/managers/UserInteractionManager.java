@@ -1,6 +1,7 @@
 package managers;
 
 import exceptions.ExitException;
+import exceptions.SkipInputException;
 import exceptions.WrongInputFormatException;
 import worker_related.Position;
 import worker_related.Status;
@@ -56,48 +57,144 @@ public class UserInteractionManager {
         }
     }
 
-    public static Integer readInteger() throws WrongInputFormatException {
-        try { return Integer.parseInt(new Scanner(System.in).nextLine()); }
+    public static Integer readInteger(boolean nullable, boolean emptying) throws WrongInputFormatException, SkipInputException {
+        String input = new Scanner(System.in).nextLine();
+        if (input.trim().equalsIgnoreCase("/skip")) {
+            throw new SkipInputException();
+        }
+        if (input.equals("")) {
+            if (emptying) {
+                System.out.println("Zero was used.");
+                return 0;
+            } else {
+                System.out.println("This field can't be empty.");
+                throw new WrongInputFormatException();
+            }
+        }
+        if (input.equalsIgnoreCase("null")) {
+            if (nullable) {
+                System.out.println("Zero was used.");
+                return 0;
+            } else {
+                System.out.println("This field can't be null.");
+                throw new WrongInputFormatException();
+            }
+        }
+        try { return Integer.parseInt(input); }
         catch (NumberFormatException e) {
             System.out.println("Please, enter a proper integer value.");
             throw new WrongInputFormatException();
         }
     }
 
-    public static Long readLong() throws WrongInputFormatException {
-        try { return Long.parseLong(new Scanner(System.in).nextLine()); }
+    public static Long readLong(boolean nullable, boolean emptying) throws WrongInputFormatException, SkipInputException {
+        String input = new Scanner(System.in).nextLine();
+        if (input.trim().equalsIgnoreCase("/skip")) {
+            throw new SkipInputException();
+        }
+        if (input.equals("")) {
+            if (emptying) {
+                System.out.println("Zero was used.");
+                return 0L;
+            } else {
+                System.out.println("This field can't be empty.");
+                throw new WrongInputFormatException();
+            }
+        }
+        if (input.equalsIgnoreCase("null")) {
+            if (nullable) {
+                System.out.println("Zero was used.");
+                return 0L;
+            } else {
+                System.out.println("This field can't be null.");
+                throw new WrongInputFormatException();
+            }
+        }
+        try { return Long.parseLong(input); }
         catch (NumberFormatException e) {
             System.out.println("Please, enter a proper long value.");
             throw new WrongInputFormatException();
         }
     }
 
-    public static Double readDouble() throws WrongInputFormatException {
-        try { return Double.parseDouble(new Scanner(System.in).nextLine()); }
+    public static Double readDouble(boolean nullable, boolean emptying) throws WrongInputFormatException, SkipInputException {
+        String input = new Scanner(System.in).nextLine();
+        if (input.trim().equalsIgnoreCase("/skip")) {
+            throw new SkipInputException();
+        }
+        if (input.equals("")) {
+            if (emptying) {
+                System.out.println("Zero was used.");
+                return 0D;
+            } else {
+                System.out.println("This field can't be empty.");
+                throw new WrongInputFormatException();
+            }
+        }
+        if (input.equalsIgnoreCase("null")) {
+            if (nullable) {
+                System.out.println("Zero was used");
+                return 0D;
+            } else {
+                System.out.println("This field can't be null.");
+                throw new WrongInputFormatException();
+            }
+        }
+        try { return Double.parseDouble(input); }
         catch (NumberFormatException e) {
             System.out.println("Please, enter a proper double precision value.");
             throw new WrongInputFormatException();
         }
     }
 
-    public static Position readPosition() throws WrongInputFormatException {
-        try { return Position.valueOf(new Scanner(System.in).nextLine().toUpperCase()); }
+    public static Position readPosition() throws WrongInputFormatException, SkipInputException {
+        String input = new Scanner(System.in).nextLine();
+        if (input.trim().equalsIgnoreCase("/skip")) {
+            throw new SkipInputException();
+        }
+        if (input.equalsIgnoreCase("null")) { return null; }
+        if (input.equals("")) {
+            System.out.println("Default status (" + Position.defaultPosition() + ") was used.");
+            return Position.defaultPosition();
+        }
+        try { return Position.valueOf(input.toUpperCase()); }
         catch (IllegalArgumentException e) {
             System.out.println("Please, enter a proper Position value.");
             throw new WrongInputFormatException();
         }
     }
 
-    public static Status readStatus() throws WrongInputFormatException {
-        try { return Status.valueOf(new Scanner(System.in).nextLine().toUpperCase()); }
+    public static Status readStatus() throws WrongInputFormatException, SkipInputException {
+        String input = new Scanner(System.in).nextLine();
+        if (input.trim().equalsIgnoreCase("/skip")) {
+            throw new SkipInputException();
+        }
+        if (input.equalsIgnoreCase("null")) { return null; }
+        if (input.equals("")) {
+            System.out.println("Default status (" + Status.defaultStatus() + ") was used.");
+            return Status.defaultStatus();
+        }
+        try { return Status.valueOf(input.toUpperCase()); }
         catch (IllegalArgumentException e) {
             System.out.println("Please, enter a proper Status value.");
             throw new WrongInputFormatException();
         }
     }
 
-    public static LocalDate readLocalDate() throws WrongInputFormatException {
-        try { return LocalDate.parse(new Scanner(System.in).nextLine()); }
+    public static LocalDate readLocalDate() throws WrongInputFormatException, SkipInputException {
+        String input = new Scanner(System.in).nextLine();
+        if (input.trim().equalsIgnoreCase("/skip")) {
+            throw new SkipInputException();
+        }
+        if (input.equalsIgnoreCase("null")) {
+            System.out.println("This field can't be null.");
+            throw new WrongInputFormatException();
+        }
+        if (input.equals("")) {
+            System.out.println("Current date was used.");
+            return LocalDate.now();
+        }
+        try { return LocalDate.parse(input); }
         catch (DateTimeParseException e) {
             System.out.println("Please, enter the date in a proper format.");
             throw new WrongInputFormatException();

@@ -4,5 +4,7 @@ public enum Status {
     FIRED,
     HIRED,
     RECOMMENDED_FOR_PROMOTION,
-    REGULAR
+    REGULAR;
+
+    public static Status defaultStatus() { return REGULAR; }
 }
