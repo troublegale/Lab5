@@ -11,7 +11,12 @@ import java.util.Map;
 public class CommandManager {
     private final Map<String, Command> commandMap;
     private final ArrayList<String> keyList;
+    private ArrayList<String> history;
     private Object argument;
+
+    {
+        history = new ArrayList<>();
+    }
 
     public CommandManager(CollectionManager colMan, FileManager fileMan) {
         Map<String, Command> commandMap = new HashMap<>();
@@ -24,7 +29,7 @@ public class CommandManager {
         commandMap.put("save", new Save(colMan, fileMan));
         commandMap.put("execute_script", new ExecuteScript());
         commandMap.put("exit", new Exit());
-        commandMap.put("history", new History());
+        commandMap.put("history", new History(history));
         commandMap.put("replace_if_lower", new ReplaceIfLower(colMan));
         commandMap.put("remove_lower_key", new RemoveLowerKey(colMan));
         commandMap.put("min_by_status", new MinByStatus(colMan));
@@ -46,6 +51,7 @@ public class CommandManager {
         Command currentCommand = commandMap.get(command);
         if (currentCommand.argType().equals("")) {
             currentCommand.execute(argument);
+            history.add(currentCommand.name());
         } else {
             if (argument.equals("")) {
                 System.out.println("Command '" + currentCommand.name() + "' requires an argument.");
@@ -55,6 +61,7 @@ public class CommandManager {
                         try {
                             argument = Integer.parseInt(argument.toString());
                             currentCommand.execute(argument);
+                            history.add(currentCommand.name());
 
                         } catch (NumberFormatException e) {
                             System.out.println("Wrong argument for '" + currentCommand.name() + "' - an integer value required.");
@@ -64,6 +71,7 @@ public class CommandManager {
                         try {
                             argument = Long.parseLong(argument.toString());
                             currentCommand.execute(argument);
+                            history.add(currentCommand.name());
                         } catch (NumberFormatException e) {
                             System.out.println("Wrong argument for '" + currentCommand.name() + "' - a long value required.");
                         }
@@ -72,6 +80,7 @@ public class CommandManager {
                         try {
                             argument = Position.valueOf(argument.toString());
                             currentCommand.execute(argument);
+                            history.add(currentCommand.name());
                         } catch (IllegalArgumentException e) {
                             System.out.println("Wrong argument for '" + currentCommand.name() + "' - a position value required.");
                         }
@@ -80,6 +89,7 @@ public class CommandManager {
                         try {
                             argument = Status.valueOf(argument.toString());
                             currentCommand.execute(argument);
+                            history.add(currentCommand.name());
                         } catch (IllegalArgumentException e) {
                             System.out.println("Wrong argument for '" + currentCommand.name() + "' - a status value required.");
                         }

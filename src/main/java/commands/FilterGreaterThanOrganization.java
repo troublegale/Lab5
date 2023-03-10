@@ -1,10 +1,12 @@
 package commands;
 
+import exceptions.ExitException;
 import managers.CollectionManager;
 import worker_related.Organization;
 import worker_related.Worker;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class FilterGreaterThanOrganization implements Command {
     CollectionManager colMan;
@@ -14,26 +16,25 @@ public class FilterGreaterThanOrganization implements Command {
 
     @Override
     public void execute(Object argument) {
-        Map<Long, Worker> workerMap = colMan.getWorkerMap();
-        if (workerMap.isEmpty()){
-            System.out.println("This collection is empty.");
-            return;
-        }
-        Organization org;
+        System.out.println("To exit the organization describing sequence without finishing, use '/exit'.");
+        System.out.println("Target organization:");
         try {
-            org = (Organization) argument;
-        } catch (ClassCastException e) {
-            System.err.println("This argument must be an Organization");
-            return;
+            int count = 0;
+            Organization targetOrg = colMan.buildOrganization();
+            for (Worker w : colMan.getWorkerMap().values()) {
+                if (!Objects.isNull(w.getOrganization())) {
+                    if (targetOrg.compareTo(w.getOrganization()) < 0) {
+                        count++;
+                        System.out.println(w);
+                    }
+                }
+            }
+            if (count == 0) {
+                System.out.println("The collection doesn't contain elements with organization value greater than given.");
+            }
+        } catch (ExitException e) {
+            System.out.println("Description canceled.");
         }
-        if (org == null) {
-            System.out.println("Organization is null.");
-        }
-        System.out.println("Elements of the collection with organization greater than " + org.getFullName() + ":");
-        workerMap.values().stream()
-                .filter(worker -> worker.getOrganization() != null)
-                .filter(worker -> worker.getOrganization().compareTo(org) > 0)
-                .forEach(worker -> System.out.println("\t" + worker));
     }
     @Override
     public String name() { return "filter_greater_than_organization"; }

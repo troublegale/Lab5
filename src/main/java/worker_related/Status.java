@@ -7,4 +7,5 @@ public enum Status {
     REGULAR;
 
     public static Status defaultStatus() { return REGULAR; }
+    public static Status minStatus() { return FIRED; }
 }

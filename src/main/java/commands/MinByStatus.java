@@ -1,8 +1,9 @@
 package commands;
 import managers.CollectionManager;
+import worker_related.Status;
 import worker_related.Worker;
 
-import java.util.Map;
+import java.util.*;
 
 public class MinByStatus implements Command {
     CollectionManager colMan;
@@ -12,22 +13,18 @@ public class MinByStatus implements Command {
 
     @Override
     public void execute(Object argument) {
-        Map<Long, Worker> workerMap =colMan.getWorkerMap();
-        if (workerMap.isEmpty()){
-            System.out.println("This collection is empty.");
-            return;
-        }
-        Worker minStatusWorker = null;
-        for (Worker worker : workerMap.values()){
-            if(minStatusWorker == null || worker.getStatus().compareTo(minStatusWorker.getStatus()) < 0){
-                minStatusWorker = worker;
+        System.out.println("Minimal status is " + Status.minStatus() +".");
+        int count = 0;
+        for (Worker w: colMan.getWorkerMap().values()) {
+            if (w.getStatus() == Status.FIRED) {
+                System.out.println(w);
+                count++;
             }
         }
-        if (minStatusWorker != null) {
-            System.out.println(minStatusWorker);
-        } else {
-            System.out.println("No workers found in the collection");
+        if (count == 0) {
+            System.out.println("The collection doesn't contain elements with the minimal status value.");
         }
+
     }
     @Override
     public String name() { return "min_by_status"; }

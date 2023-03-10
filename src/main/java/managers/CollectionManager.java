@@ -257,7 +257,7 @@ public class CollectionManager {
                 newOrganization.setFullName(workerMap.get(id).getOrganization().getFullName());
                 System.out.println("Skipped.");
             } else {
-                if (!name.equals("")) {
+                if (name.equals("")) {
                     newOrganization.setFullName("empty");
                 } else {
                     newOrganization.setFullName(name);
@@ -532,7 +532,7 @@ public class CollectionManager {
             if (name.trim().equalsIgnoreCase("/exit")) {
                 throw new ExitException();
             }
-            if (!name.equals("")) {
+            if (name.equals("")) {
                 newOrganization.setFullName("empty");
             } else {
                 newOrganization.setFullName(name);
@@ -551,9 +551,7 @@ public class CollectionManager {
                 } catch (WrongInputFormatException e) {
                     continue;
                 } catch (SkipInputException e) {
-                    newOrganization.setAnnualTurnover(workerMap.get(key).getOrganization().getAnnualTurnover());
-                    System.out.println("Skipped.");
-                    break;
+                    System.out.println("Please, enter a proper integer value.");
                 }
             }
             System.out.println("--Organization's employee number (long value, > 0):");
@@ -600,6 +598,85 @@ public class CollectionManager {
         }
         return new Worker(key, newName, newCoordinates, LocalDate.now(), newSalary, newStartDate, newPosition,
                 newStatus, newOrganization);
+    }
+
+    public Organization buildOrganization() throws ExitException {
+        Scanner scanner = new Scanner(System.in);
+        Address newAddress = new Address(null, "");
+        Organization targetOrg = new Organization("", 1, 1L, newAddress);
+        System.out.println("Name:");
+        System.out.print(">> ");
+        String name = scanner.nextLine();
+        if (name.trim().equalsIgnoreCase("/exit")) {
+            throw new ExitException();
+        }
+        if (name.equals("")) {
+            targetOrg.setFullName("яOrg");
+            System.out.println("Organization name was set to 'ёOrg'.");
+        } else {
+            targetOrg.setFullName(name);
+        }
+        System.out.println("Annual turnover (integer value, > 0):");
+        while (true) {
+            System.out.print(">> ");
+            try {
+                int turnover = UserInteractionManager.readInteger(false, false);
+                if (turnover > 0) {
+                    targetOrg.setAnnualTurnover(turnover);
+                    break;
+                } else {
+                    System.out.println("Annual turnover has to be greater than 0.");
+                }
+            } catch (WrongInputFormatException e) {
+                continue;
+            } catch (SkipInputException e) {
+                System.out.println("Please, enter a proper integer value.");
+            }
+        }
+        System.out.println("Employee number (long value, > 0):");
+        while (true) {
+            System.out.print(">> ");
+            try {
+                long employeeCount = UserInteractionManager.readLong(false, false);
+                if (employeeCount > 0) {
+                    targetOrg.setEmployeesCount(employeeCount);
+                    break;
+                } else {
+                    System.out.println("Employee number has to be greater than 0.");
+                }
+            } catch (WrongInputFormatException e) {
+                continue;
+            } catch (SkipInputException e) {
+                System.out.println("Please, enter a proper long value.");
+            }
+        }
+        System.out.println("Address:");
+        System.out.println("--Street:");
+        System.out.print("-->> ");
+        String street = scanner.nextLine();
+        if (street.trim().equalsIgnoreCase("/exit")) {
+            throw new ExitException();
+        }
+        if (street.equals("")) {
+            newAddress.setStreet("empty");
+            System.out.println("Street was set to 'empty'.");
+        } else {
+            newAddress.setStreet(street);
+        }
+        System.out.println("--Zip code:");
+        System.out.print("-->> ");
+        String zip = scanner.nextLine();
+        if (zip.trim().equalsIgnoreCase("/exit")) {
+            throw new ExitException();
+        }
+        if (zip.equals("")) {
+            newAddress.setZipCode("empty");
+            System.out.println("Zip code was set to 'empty'.");
+        } else {
+            newAddress.setZipCode(zip);
+        }
+        targetOrg.setPostalAddress(newAddress);
+        return targetOrg;
     }
 
 
