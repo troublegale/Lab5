@@ -41,11 +41,25 @@ public class CommandManager {
         this.keyList = new ArrayList<>(commandMap.keySet());
     }
 
-    public Object getArgument() {return argument; }
-    public void setArgument(String argument) { this.argument = argument; }
-    public Map<String, Command> getCommandMap() { return commandMap; }
-    public ArrayList<String> getKeyList() { return keyList; }
-    public boolean hasCommand(String string) { return keyList.contains(string); }
+    public Object getArgument() {
+        return argument;
+    }
+
+    public void setArgument(String argument) {
+        this.argument = argument;
+    }
+
+    public Map<String, Command> getCommandMap() {
+        return commandMap;
+    }
+
+    public ArrayList<String> getKeyList() {
+        return keyList;
+    }
+
+    public boolean hasCommand(String string) {
+        return keyList.contains(string);
+    }
 
     public void handleCommand(String command) {
         Command currentCommand = commandMap.get(command);

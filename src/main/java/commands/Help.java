@@ -19,12 +19,24 @@ public class Help implements Command {
             }
         }
     }
+
     @Override
-    public String name() { return "help"; }
+    public String name() {
+        return "help";
+    }
+
     @Override
-    public String arg() { return ""; }
+    public String arg() {
+        return "";
+    }
+
     @Override
-    public String description() { return "print out the list of available commands"; }
+    public String description() {
+        return "print out the list of available commands";
+    }
+
     @Override
-    public String argType() { return ""; }
+    public String argType() {
+        return "";
+    }
 }

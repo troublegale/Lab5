@@ -11,11 +11,22 @@ public class Test implements Command {
     }
 
     @Override
-    public String name() { return "test"; }
+    public String name() {
+        return "test";
+    }
+
     @Override
-    public String arg() { return "[something]"; }
+    public String arg() {
+        return "[something]";
+    }
+
     @Override
-    public String description() { return "just a test command"; }
+    public String description() {
+        return "just a test command";
+    }
+
     @Override
-    public String argType() { return ""; }
+    public String argType() {
+        return "";
+    }
 }

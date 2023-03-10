@@ -6,6 +6,11 @@ public enum Status {
     RECOMMENDED_FOR_PROMOTION,
     REGULAR;
 
-    public static Status defaultStatus() { return REGULAR; }
-    public static Status minStatus() { return FIRED; }
+    public static Status defaultStatus() {
+        return REGULAR;
+    }
+
+    public static Status minStatus() {
+        return FIRED;
+    }
 }

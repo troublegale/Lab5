@@ -5,5 +5,7 @@ public enum Position {
     DEVELOPER,
     MANAGER_OF_CLEANING;
 
-    public static Position defaultPosition() { return DEVELOPER; }
+    public static Position defaultPosition() {
+        return DEVELOPER;
+    }
 }

@@ -4,6 +4,7 @@ import managers.CollectionManager;
 
 public class Info implements Command {
     CollectionManager colMan;
+
     public Info(CollectionManager colMan) {
         this.colMan = colMan;
     }
@@ -15,12 +16,24 @@ public class Info implements Command {
         System.out.println("The number of elements is " + colMan.getWorkerMap().size() + ".");
         System.out.println("The collection keys are the same as the Workers' id's.");
     }
+
     @Override
-    public String name() { return "info"; }
+    public String name() {
+        return "info";
+    }
+
     @Override
-    public String arg() { return ""; }
+    public String arg() {
+        return "";
+    }
+
     @Override
-    public String description() { return "print out the information about the collection"; }
+    public String description() {
+        return "print out the information about the collection";
+    }
+
     @Override
-    public String argType() { return ""; }
+    public String argType() {
+        return "";
+    }
 }

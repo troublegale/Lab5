@@ -8,6 +8,7 @@ import java.io.File;
 public class Save implements Command {
     CollectionManager colMan;
     FileManager fileManager;
+
     public Save(CollectionManager colMan, FileManager fileManager) {
         this.colMan = colMan;
         this.fileManager = fileManager;
@@ -19,12 +20,24 @@ public class Save implements Command {
         fileManager.writeWorkersToFile(colMan);
         System.out.println("Successfully saved.");
     }
+
     @Override
-    public String name() { return "save"; }
+    public String name() {
+        return "save";
+    }
+
     @Override
-    public String arg() { return ""; }
+    public String arg() {
+        return "";
+    }
+
     @Override
-    public String description() { return "save the collection to file"; }
+    public String description() {
+        return "save the collection to file";
+    }
+
     @Override
-    public String argType() { return ""; }
+    public String argType() {
+        return "";
+    }
 }

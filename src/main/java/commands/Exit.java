@@ -8,12 +8,24 @@ public class Exit implements Command {
     public void execute(Object argument) {
         throw new ExitException();
     }
+
     @Override
-    public String name() { return "exit"; }
+    public String name() {
+        return "exit";
+    }
+
     @Override
-    public String arg() { return ""; }
+    public String arg() {
+        return "";
+    }
+
     @Override
-    public String description() { return "stop the application without saving"; }
+    public String description() {
+        return "stop the application without saving";
+    }
+
     @Override
-    public String argType() { return ""; }
+    public String argType() {
+        return "";
+    }
 }

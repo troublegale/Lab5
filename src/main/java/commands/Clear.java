@@ -11,7 +11,7 @@ public class Clear implements Command {
 
     @Override
     public void execute(Object argument) {
-        if (colMan.getWorkerMap().isEmpty()){
+        if (colMan.getWorkerMap().isEmpty()) {
             System.out.println("This collection is already empty.");
             return;
         }
