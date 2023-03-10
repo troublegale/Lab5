@@ -2,6 +2,8 @@ package commands;
 
 import exceptions.ExitException;
 import managers.CollectionManager;
+import managers.UserInteractionManager;
+import worker_related.*;
 
 public class Update implements Command {
 
