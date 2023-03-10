@@ -1,13 +1,6 @@
 package commands;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Scanner;
-
-import exceptions.WrongInputFormatException;
 import managers.CollectionManager;
-import managers.UserInteractionManager;
-import worker_related.*;
 
 public class Update implements Command {
 
