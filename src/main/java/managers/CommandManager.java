@@ -1,6 +1,9 @@
 package managers;
 
 import commands.*;
+import worker_related.Position;
+import worker_related.Status;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +13,7 @@ public class CommandManager {
     private final ArrayList<String> keyList;
     private Object argument;
 
-    public CommandManager(CollectionManager colMan, FileManager fileManager) {
+    public CommandManager(CollectionManager colMan, FileManager fileMan) {
         Map<String, Command> commandMap = new HashMap<>();
         commandMap.put("info", new Info(colMan));
         commandMap.put("show", new Show(colMan));
@@ -18,7 +21,7 @@ public class CommandManager {
         commandMap.put("update", new Update(colMan));
         commandMap.put("remove_key", new RemoveKey(colMan));
         commandMap.put("clear", new Clear(colMan));
-        commandMap.put("save", new Save(colMan,fileManager);
+        commandMap.put("save", new Save(colMan, fileMan));
         commandMap.put("execute_script", new ExecuteScript());
         commandMap.put("exit", new Exit());
         commandMap.put("history", new History());
@@ -65,7 +68,22 @@ public class CommandManager {
                             System.out.println("Wrong argument for '" + currentCommand.name() + "' - a long value required.");
                         }
                     }
-//                    case ""
+                    case "position" -> {
+                        try {
+                            argument = Position.valueOf(argument.toString());
+                            currentCommand.execute(argument);
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Wrong argument for '" + currentCommand.name() + "' - a position value required.");
+                        }
+                    }
+                    case "status" -> {
+                        try {
+                            argument = Status.valueOf(argument.toString());
+                            currentCommand.execute(argument);
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Wrong argument for '" + currentCommand.name() + "' - a status value required.");
+                        }
+                    }
                 }
             }
         }

@@ -12,19 +12,15 @@ public class RemoveKey implements Command {
 
     @Override
     public void execute(Object argument) {
-        if (colMan.getWorkerMap().isEmpty()){
-            System.out.println("This collection is empty.");
-            return;
-        }
         Long key = (Long) argument;
         for (Worker worker : colMan.getWorkerMap().values()) {
             if (worker.getId() == key) {
                 colMan.getWorkerMap().values().remove(worker);
                 System.out.println("Collection element with key " + key + " has been successfully deleted.");
-            } else {
-                System.out.println("There is no collection element with such key");
+                return;
             }
         }
+        System.out.println("There is no collection element with such key");
     }
 
     @Override

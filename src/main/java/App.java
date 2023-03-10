@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class App {
 
     public static void main(String[] args) {
-//        FileManager fileManager = new FileManager(System.getenv("file_path"));
+        FileManager fileMan = new FileManager(System.getenv("file_path"));
 //        HashMap<Long,Worker> workerMap = new HashMap<>();
 //        try{
 //            workerMap = fileManager.readWorkersFromFile();
@@ -15,7 +15,7 @@ public class App {
 //            System.err.println("Could not read the information from the file: " + e.getMessage());
 //        }
         CollectionManager colMan = new CollectionManager(tempWorkerMap(), "08/03/23");
-        CommandManager comMan = new CommandManager(colMan);
+        CommandManager comMan = new CommandManager(colMan, fileMan);
         UserInteractionManager uim = new UserInteractionManager(comMan);
         uim.interact();
 //        fileManager.writeWorkersToFile(colMan);
