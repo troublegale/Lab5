@@ -23,9 +23,9 @@ public class Insert implements Command {
     @Override
     public String name() { return "insert"; }
     @Override
-    public String arg() { return "{key(integer value)}"; }
+    public String arg() { return "{key(long value)}"; }
     @Override
     public String description() { return "add a new element to the collection using the given key"; }
     @Override
-    public String argType() { return "int"; }
+    public String argType() { return "long"; }
 }

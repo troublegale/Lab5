@@ -1,7 +1,12 @@
 package managers;
 
 import exceptions.ExitException;
+import exceptions.WrongInputFormatException;
+import worker_related.Position;
+import worker_related.Status;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class UserInteractionManager {
@@ -48,6 +53,54 @@ public class UserInteractionManager {
                 System.out.println("Shutting down...");
                 break;
             }
+        }
+    }
+
+    public static Integer readInteger() throws WrongInputFormatException {
+        try { return Integer.parseInt(new Scanner(System.in).nextLine()); }
+        catch (NumberFormatException e) {
+            System.out.println("Please, enter a proper integer value.");
+            throw new WrongInputFormatException();
+        }
+    }
+
+    public static Long readLong() throws WrongInputFormatException {
+        try { return Long.parseLong(new Scanner(System.in).nextLine()); }
+        catch (NumberFormatException e) {
+            System.out.println("Please, enter a proper long value.");
+            throw new WrongInputFormatException();
+        }
+    }
+
+    public static Double readDouble() throws WrongInputFormatException {
+        try { return Double.parseDouble(new Scanner(System.in).nextLine()); }
+        catch (NumberFormatException e) {
+            System.out.println("Please, enter a proper double precision value.");
+            throw new WrongInputFormatException();
+        }
+    }
+
+    public static Position readPosition() throws WrongInputFormatException {
+        try { return Position.valueOf(new Scanner(System.in).nextLine().toUpperCase()); }
+        catch (IllegalArgumentException e) {
+            System.out.println("Please, enter a proper Position value.");
+            throw new WrongInputFormatException();
+        }
+    }
+
+    public static Status readStatus() throws WrongInputFormatException {
+        try { return Status.valueOf(new Scanner(System.in).nextLine().toUpperCase()); }
+        catch (IllegalArgumentException e) {
+            System.out.println("Please, enter a proper Status value.");
+            throw new WrongInputFormatException();
+        }
+    }
+
+    public static LocalDate readLocalDate() throws WrongInputFormatException {
+        try { return LocalDate.parse(new Scanner(System.in).nextLine()); }
+        catch (DateTimeParseException e) {
+            System.out.println("Please, enter the date in a proper format.");
+            throw new WrongInputFormatException();
         }
     }
 

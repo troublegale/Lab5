@@ -60,6 +60,7 @@ public class CommandManager {
                     case "long" -> {
                         try {
                             argument = Long.parseLong(argument.toString());
+                            currentCommand.execute(argument);
                         } catch (NumberFormatException e) {
                             System.out.println("Wrong argument for '" + currentCommand.name() + "' - a long value required.");
                         }

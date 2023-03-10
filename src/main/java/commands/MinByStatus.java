@@ -16,7 +16,7 @@ public class MinByStatus implements Command {
     @Override
     public String arg() { return ""; }
     @Override
-    public String description() { return "print out all elements with the lowest Status field value"; }
+    public String description() { return "print out all elements with the lowest status value"; }
     @Override
     public String argType() { return ""; }
 }

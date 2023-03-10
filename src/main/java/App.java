@@ -12,8 +12,8 @@ public class App {
         uim.interact();
     }
 
-    static HashMap<Integer, Worker> tempWorkerMap() {
-        HashMap<Integer, Worker> map = new HashMap<>();
+    static HashMap<Long, Worker> tempWorkerMap() {
+        HashMap<Long, Worker> map = new HashMap<>();
         Worker one = new Worker(1, "One", new Coordinates(1, 2D), LocalDate.now(), 9000,
                 LocalDate.now(), Position.DEVELOPER, Status.HIRED,
                 new Organization("Company", 150000, 200L,
@@ -34,11 +34,11 @@ public class App {
                 LocalDate.now(), Position.MANAGER_OF_CLEANING, Status.FIRED,
                 new Organization("Company", 160000, 200L,
                         new Address("Street", "1111")));
-        map.put((int)one.getId(), one);
-        map.put((int)two.getId(), two);
-        map.put((int)three.getId(), three);
-        map.put((int)four.getId(), four);
-        map.put((int)five.getId(), five);
+        map.put(one.getId(), one);
+        map.put(two.getId(), two);
+        map.put(three.getId(), three);
+        map.put(four.getId(), four);
+        map.put(five.getId(), five);
         return map;
     }
 

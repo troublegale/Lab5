@@ -12,13 +12,13 @@ public class RemoveKey implements Command {
 
     @Override
     public void execute(Object argument) {
-        Integer key = (Integer) argument;
+        Long key = (Long) argument;
         for (Worker worker : colMan.getWorkerMap().values()) {
             if (worker.getId() == key) {
                 colMan.getWorkerMap().values().remove(worker);
-                System.out.println("Collection element with key " + key + "has been successfully deleted.");
+                System.out.println("Collection element with key " + key + " has been successfully deleted.");
             } else {
-                System.out.println("There is no collection element with such a key");
+                System.out.println("There is no collection element with such key");
             }
         }
     }
@@ -30,7 +30,7 @@ public class RemoveKey implements Command {
 
     @Override
     public String arg() {
-        return "{key(integer value)}";
+        return "{key(long value)}";
     }
 
     @Override
@@ -40,6 +40,6 @@ public class RemoveKey implements Command {
 
     @Override
     public String argType() {
-        return "int";
+        return "long";
     }
 }

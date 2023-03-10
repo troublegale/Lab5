@@ -16,9 +16,9 @@ public class ReplaceIfLower implements Command {
     @Override
     public String name() { return "replace_if_lower"; }
     @Override
-    public String arg() { return "{key(integer value)}"; }
+    public String arg() { return "{key(long value)}"; }
     @Override
     public String description() { return "replace an element with the given key if the newly described element is lower than the current"; }
     @Override
-    public String argType() { return "int"; }
+    public String argType() { return "long"; }
 }

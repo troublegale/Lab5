@@ -15,9 +15,9 @@ public class RemoveLowerKey implements Command {
     @Override
     public String name() { return "remove_lower_key"; }
     @Override
-    public String arg() { return "{key(integer value)}"; }
+    public String arg() { return "{key(long value)}"; }
     @Override
     public String description() { return "remove all elements with the key lower than given from the collection"; }
     @Override
-    public String argType() { return "int"; }
+    public String argType() { return "long"; }
 }

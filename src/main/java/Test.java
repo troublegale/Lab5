@@ -1,12 +1,13 @@
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(1, 3);
-        map.put(2, 43);
-        map.put(3, 300);
-        System.out.println(map.remove(5));
+        System.out.println(map.replace(1, null, 14));
+        System.out.println(map.get(1));
     }
 }
