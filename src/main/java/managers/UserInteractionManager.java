@@ -1,5 +1,6 @@
 package managers;
 
+import commands.Exit;
 import exceptions.ExitException;
 import exceptions.SkipInputException;
 import exceptions.WrongInputFormatException;
@@ -59,6 +60,9 @@ public class UserInteractionManager {
 
     public static Integer readInteger(boolean nullable, boolean emptying) throws WrongInputFormatException, SkipInputException {
         String input = new Scanner(System.in).nextLine();
+        if (input.trim().equalsIgnoreCase("/exit")) {
+            throw new ExitException();
+        }
         if (input.trim().equalsIgnoreCase("/skip")) {
             throw new SkipInputException();
         }
@@ -89,6 +93,9 @@ public class UserInteractionManager {
 
     public static Long readLong(boolean nullable, boolean emptying) throws WrongInputFormatException, SkipInputException {
         String input = new Scanner(System.in).nextLine();
+        if (input.trim().equalsIgnoreCase("/exit")) {
+            throw new ExitException();
+        }
         if (input.trim().equalsIgnoreCase("/skip")) {
             throw new SkipInputException();
         }
@@ -119,6 +126,9 @@ public class UserInteractionManager {
 
     public static Double readDouble(boolean nullable, boolean emptying) throws WrongInputFormatException, SkipInputException {
         String input = new Scanner(System.in).nextLine();
+        if (input.trim().equalsIgnoreCase("/exit")) {
+            throw new ExitException();
+        }
         if (input.trim().equalsIgnoreCase("/skip")) {
             throw new SkipInputException();
         }
@@ -149,6 +159,9 @@ public class UserInteractionManager {
 
     public static Position readPosition() throws WrongInputFormatException, SkipInputException {
         String input = new Scanner(System.in).nextLine();
+        if (input.trim().equalsIgnoreCase("/exit")) {
+            throw new ExitException();
+        }
         if (input.trim().equalsIgnoreCase("/skip")) {
             throw new SkipInputException();
         }
@@ -166,6 +179,9 @@ public class UserInteractionManager {
 
     public static Status readStatus() throws WrongInputFormatException, SkipInputException {
         String input = new Scanner(System.in).nextLine();
+        if (input.trim().equalsIgnoreCase("/exit")) {
+            throw new ExitException();
+        }
         if (input.trim().equalsIgnoreCase("/skip")) {
             throw new SkipInputException();
         }
@@ -183,6 +199,9 @@ public class UserInteractionManager {
 
     public static LocalDate readLocalDate() throws WrongInputFormatException, SkipInputException {
         String input = new Scanner(System.in).nextLine();
+        if (input.trim().equalsIgnoreCase("/exit")) {
+            throw new ExitException();
+        }
         if (input.trim().equalsIgnoreCase("/skip")) {
             throw new SkipInputException();
         }

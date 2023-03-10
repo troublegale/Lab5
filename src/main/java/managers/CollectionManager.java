@@ -38,6 +38,9 @@ public class CollectionManager {
         while (true) {
             System.out.print(">> ");
             String name = scanner.nextLine().trim();
+            if (name.equalsIgnoreCase("/exit")) {
+                throw new ExitException();
+            }
             if (name.equalsIgnoreCase("/skip")) {
                 newName = workerMap.get(id).getName();
                 System.out.println("Skipped.");
@@ -122,6 +125,9 @@ public class CollectionManager {
         while (true) {
             System.out.print(">> ");
             String answer = scanner.nextLine();
+            if (answer.trim().equalsIgnoreCase("/exit")) {
+                throw new ExitException();
+            }
             if (answer.trim().equalsIgnoreCase("/skip")) {
                 newPosition = workerMap.get(id).getPosition();
                 System.out.println("Skipped.");
@@ -167,6 +173,9 @@ public class CollectionManager {
         while (true) {
             System.out.print(">> ");
             String answer = scanner.nextLine();
+            if (answer.trim().equalsIgnoreCase("/exit")) {
+                throw new ExitException();
+            }
             if (answer.trim().equalsIgnoreCase("/skip")) {
                 newStatus = workerMap.get(id).getStatus();
                 System.out.println("Skipped.");
@@ -212,6 +221,9 @@ public class CollectionManager {
         while (true) {
             System.out.print(">> ");
             String answer = scanner.nextLine();
+            if (answer.trim().equalsIgnoreCase("/exit")) {
+                throw new ExitException();
+            }
             if (answer.trim().equalsIgnoreCase("/skip")) {
                 newOrganization = workerMap.get(id).getOrganization();
                 System.out.println("Skipped.");
@@ -235,6 +247,9 @@ public class CollectionManager {
             System.out.println("--Organization's name:");
             System.out.print("-->> ");
             String name = scanner.nextLine();
+            if (name.trim().equalsIgnoreCase("/exit")) {
+                throw new ExitException();
+            }
             if (name.trim().equalsIgnoreCase("/skip")) {
                 newOrganization.setFullName(workerMap.get(id).getOrganization().getFullName());
                 System.out.println("Skipped.");
@@ -287,6 +302,9 @@ public class CollectionManager {
             System.out.println("----Street:");
             System.out.print("---->> ");
             String street = scanner.nextLine();
+            if (street.trim().equalsIgnoreCase("/exit")) {
+                throw new ExitException();
+            }
             if (street.trim().equalsIgnoreCase("/skip")) {
                 newAddress.setStreet(workerMap.get(id).getOrganization().getPostalAddress().getStreet());
                 System.out.println("Skipped.");
@@ -300,6 +318,9 @@ public class CollectionManager {
             System.out.println("----Zip code:");
             System.out.print("---->> ");
             String zip = scanner.nextLine();
+            if (zip.trim().equalsIgnoreCase("/exit")) {
+                throw new ExitException();
+            }
             if (zip.trim().equalsIgnoreCase("/skip")) {
                 newAddress.setZipCode(workerMap.get(id).getOrganization().getPostalAddress().getZipCode());
                 System.out.println("Skipped.");
