@@ -13,6 +13,10 @@ public class MinByStatus implements Command {
     @Override
     public void execute(Object argument) {
         Map<Long, Worker> workerMap =colMan.getWorkerMap();
+        if (workerMap.isEmpty()){
+            System.out.println("This collection is empty.");
+            return;
+        }
         Worker minStatusWorker = null;
         for (Worker worker : workerMap.values()){
             if(minStatusWorker == null || worker.getStatus().compareTo(minStatusWorker.getStatus()) < 0){
