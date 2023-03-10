@@ -11,14 +11,7 @@ public class Insert implements Command {
 
     @Override
     public void execute(Object argument) {
-//        int id = Integer.parseInt((String) arg());
- //       for (Worker worker : colMan.getWorkerMap().values()){
-  //          if (colMan.getWorkerMap().containsKey(id)){
-   //             System.out.println("This key already exists.");
-     //       } else {
-      //          colMan.getWorkerMap().put(id, worker);
-        //    }
-      //  }
+
     }
     @Override
     public String name() { return "insert"; }
