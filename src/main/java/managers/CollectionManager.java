@@ -1,5 +1,4 @@
 package managers;
-import commands.Exit;
 import exceptions.ExitException;
 import exceptions.SkipInputException;
 import exceptions.WrongInputFormatException;
@@ -17,7 +16,13 @@ public class CollectionManager {
         this.workerMap = workerMap;
         this.creationDate = creationDate;
     }
-
+    public int determineRoute(String answer) {
+        try {
+            return Integer.parseInt(answer);
+        } catch (NumberFormatException e) {
+            return -1;
+        }
+    }
     public Worker createNewWorker(long id) throws ExitException {
         Scanner scanner = new Scanner(System.in);
         String newName;
@@ -113,215 +118,199 @@ public class CollectionManager {
             }
         }
         System.out.println("Set position or keep it null? (1/2)");
+        boolean set = false;
         while (true) {
             System.out.print(">> ");
-            String input = scanner.nextLine();
-            if (input.trim().equalsIgnoreCase("/skip")) {
+            String answer = scanner.nextLine();
+            if (answer.trim().equalsIgnoreCase("/skip")) {
                 newPosition = workerMap.get(id).getPosition();
                 System.out.println("Skipped.");
                 break;
             } else {
-                int answer;
-                while (true) {
-                    try {
-                        answer = Integer.parseInt(input);
-                        break;
-                    } catch (NumberFormatException e) {
-                        System.out.println("Please, enter 1 or 2.");
-                    }
-                }
-                if (answer == 2) {
+                int route = determineRoute(answer);
+                if (route == 2) {
                     break;
-                } else if (answer == 1) {
-                    System.out.print("New position (");
-                    StringBuilder sb = new StringBuilder();
-                    for (Position p : Position.values()) {
-                        sb.append(p.toString()).append(", ");
-                    }
-                    String positions = sb.toString();
-                    for (int i = 0; i < positions.length() - 2; i++) {
-                        System.out.print(positions.toCharArray()[i]);
-                    }
-                    System.out.println("):");
-                    while (true) {
-                        System.out.print(">> ");
-                        try {
-                            newPosition = UserInteractionManager.readPosition();
-                            break;
-                        } catch (WrongInputFormatException e) {
-                            continue;
-                        } catch (SkipInputException e) {
-                            newPosition = workerMap.get(id).getPosition();
-                            System.out.println("Skipped.");
-                            break;
-                        }
-                    }
+                } else if (route == 1) {
+                    set = true;
                     break;
                 } else {
                     System.out.println("Please, enter 1 or 2.");
+                }
+            }
+        }
+        if (set) {
+            System.out.print("New position (");
+            StringBuilder sb = new StringBuilder();
+            for (Position p : Position.values()) {
+                sb.append(p.toString()).append(", ");
+            }
+            for (int i = 0; i < sb.toString().toCharArray().length - 2; i ++) {
+                System.out.print(sb.toString().toCharArray()[i]);
+            }
+            System.out.println("):");
+            while (true) {
+                System.out.print(">> ");
+                try {
+                    newPosition = UserInteractionManager.readPosition();
+                    break;
+                } catch (WrongInputFormatException e) {
+                    continue;
+                } catch (SkipInputException e) {
+                    newPosition = workerMap.get(id).getPosition();
+                    System.out.println("Skipped.");
+                    break;
                 }
             }
         }
         System.out.println("Set status or keep it null? (1/2)");
+        set = false;
         while (true) {
             System.out.print(">> ");
-            String input = scanner.nextLine();
-            if (input.trim().equalsIgnoreCase("/skip")) {
+            String answer = scanner.nextLine();
+            if (answer.trim().equalsIgnoreCase("/skip")) {
                 newStatus = workerMap.get(id).getStatus();
                 System.out.println("Skipped.");
                 break;
             } else {
-                int answer;
-                while (true) {
-                    try {
-                        System.out.print(">> ");
-                        answer = Integer.parseInt(input);
-                        break;
-                    } catch (NumberFormatException e) {
-                        System.out.println("Please, enter 1 or 2.");
-                    }
-                }
-                if (answer == 2) {
+                int route = determineRoute(answer);
+                if (route == 2) {
                     break;
-                } else if (answer == 1) {
-                    System.out.print("New status (");
-                    StringBuilder sb = new StringBuilder();
-                    for (Status s : Status.values()) {
-                        sb.append(s.toString()).append(", ");
-                    }
-                    String statuses = sb.toString();
-                    for (int i = 0; i < statuses.length() - 2; i++) {
-                        System.out.print(statuses.toCharArray()[i]);
-                    }
-                    System.out.println("):");
-                    while (true) {
-                        System.out.print(">> ");
-                        try {
-                            newStatus = UserInteractionManager.readStatus();
-                            break;
-                        } catch (WrongInputFormatException e) {
-                            continue;
-                        } catch (SkipInputException e) {
-                            newStatus = workerMap.get(id).getStatus();
-                            System.out.println("Skipped.");
-                            break;
-                        }
-                    }
+                } else if (route == 1) {
+                    set = true;
                     break;
                 } else {
                     System.out.println("Please, enter 1 or 2.");
                 }
             }
         }
+        if (set) {
+            System.out.print("New status(");
+            StringBuilder sb = new StringBuilder();
+            for (Status s : Status.values()) {
+                sb.append(s.toString()).append(", ");
+            }
+            for (int i = 0; i < sb.toString().toCharArray().length - 2; i ++) {
+                System.out.print(sb.toString().toCharArray()[i]);
+            }
+            System.out.println("):");
+            while (true) {
+                System.out.print(">> ");
+                try {
+                    newStatus = UserInteractionManager.readStatus();
+                    break;
+                } catch (WrongInputFormatException e) {
+                    continue;
+                } catch (SkipInputException e) {
+                    newStatus = workerMap.get(id).getStatus();
+                    System.out.println("Skipped.");
+                    break;
+                }
+            }
+        }
         System.out.println("Set organization or keep it null? (1/2)");
+        set = false;
         while (true) {
             System.out.print(">> ");
-            String input = scanner.nextLine();
-            if (input.trim().equalsIgnoreCase("/skip")) {
+            String answer = scanner.nextLine();
+            if (answer.trim().equalsIgnoreCase("/skip")) {
                 newOrganization = workerMap.get(id).getOrganization();
                 System.out.println("Skipped.");
                 break;
             } else {
-                int answer;
-                while (true) {
-                    try {
-                        System.out.print(">> ");
-                        answer = Integer.parseInt(input);
-                        break;
-                    } catch (NumberFormatException e) {
-                        System.out.println("Please, enter 1 or 2.");
-                    }
-                }
-                if (answer == 2) {
+                int route = determineRoute(answer);
+                if (route == 2) {
                     break;
-                } else if (answer == 1) {
-                    Address newAddress = new Address(null, "");
-                    newOrganization = new Organization("", 1, 1L, newAddress);
-                    System.out.println("New organization:");
-                    System.out.println("--Organization's name:");
-                    System.out.print("-->> ");
-                    String name = scanner.nextLine();
-                    if (name.trim().equalsIgnoreCase("/skip")) {
-                        newOrganization.setFullName(workerMap.get(id).getOrganization().getFullName());
-                        System.out.println("Skipped.");
-                    } else {
-                        if (!name.equals("")) {
-                            newOrganization.setFullName("empty");
-                        } else {
-                            newOrganization.setFullName(name);
-                        }
-                        System.out.println("--Organization's annual turnover (integer value, > 0):");
-                        while (true) {
-                            System.out.print("-->> ");
-                            try {
-                                int turnover = UserInteractionManager.readInteger(false, false);
-                                if (turnover > 0) {
-                                    newOrganization.setAnnualTurnover(turnover);
-                                    break;
-                                } else {
-                                    System.out.println("Annual turnover has to be greater than 0.");
-                                }
-                            } catch (WrongInputFormatException e) {
-                                continue;
-                            } catch (SkipInputException e) {
-                                newOrganization.setAnnualTurnover(workerMap.get(id).getOrganization().getAnnualTurnover());
-                                System.out.println("Skipped.");
-                                break;
-                            }
-                        }
-                    }
-                    System.out.println("--Organization's employee number (long value, > 0):");
-                    while (true) {
-                        System.out.print("-->> ");
-                        try {
-                            long employeeCount = UserInteractionManager.readLong(false, false);
-                            if (employeeCount > 0) {
-                                newOrganization.setEmployeesCount(employeeCount);
-                                break;
-                            } else {
-                                System.out.println("Employee number has to be greater than 0.");
-                            }
-                        } catch (WrongInputFormatException e) {
-                            continue;
-                        } catch (SkipInputException e) {
-                            newOrganization.setEmployeesCount(workerMap.get(id).getOrganization().getEmployeesCount());
-                            System.out.println("Skipped.");
-                            break;
-                        }
-                    }
-                    System.out.println("--Organization's address:");
-                    System.out.println("----Street:");
-                    System.out.print("---->> ");
-                    String street = scanner.nextLine();
-                    if (street.trim().equalsIgnoreCase("/skip")) {
-                        newAddress.setStreet(workerMap.get(id).getOrganization().getPostalAddress().getStreet());
-                        System.out.println("Skipped.");
-                    } else {
-                        if (street.equals("")) {
-                            newAddress.setStreet("empty");
-                        } else {
-                            newAddress.setStreet(street);
-                        }
-                    }
-                    System.out.println("----Zip code:");
-                    System.out.print("---->> ");
-                    String zip = scanner.nextLine();
-                    if (zip.trim().equalsIgnoreCase("/skip")) {
-                        newAddress.setZipCode(workerMap.get(id).getOrganization().getPostalAddress().getZipCode());
-                        System.out.println("Skipped.");
-                    } else {
-                        if (zip.equals("")) {
-                            newAddress.setZipCode("empty");
-                        } else {
-                            newAddress.setZipCode(zip);
-                        }
-                    }
-                    newOrganization.setPostalAddress(newAddress);
+                } else if (route == 1) {
+                    set = true;
                     break;
                 } else {
                     System.out.println("Please, enter 1 or 2.");
                 }
             }
+        }
+        if (set) {
+            Address newAddress = new Address(null, "");
+            newOrganization = new Organization("", 1, 1L, newAddress);
+            System.out.println("New organization:");
+            System.out.println("--Organization's name:");
+            System.out.print("-->> ");
+            String name = scanner.nextLine();
+            if (name.trim().equalsIgnoreCase("/skip")) {
+                newOrganization.setFullName(workerMap.get(id).getOrganization().getFullName());
+                System.out.println("Skipped.");
+            } else {
+                if (!name.equals("")) {
+                    newOrganization.setFullName("empty");
+                } else {
+                    newOrganization.setFullName(name);
+                }
+                System.out.println("--Organization's annual turnover (integer value, > 0):");
+                while (true) {
+                    System.out.print("-->> ");
+                    try {
+                        int turnover = UserInteractionManager.readInteger(false, false);
+                        if (turnover > 0) {
+                            newOrganization.setAnnualTurnover(turnover);
+                            break;
+                        } else {
+                            System.out.println("Annual turnover has to be greater than 0.");
+                        }
+                    } catch (WrongInputFormatException e) {
+                        continue;
+                    } catch (SkipInputException e) {
+                        newOrganization.setAnnualTurnover(workerMap.get(id).getOrganization().getAnnualTurnover());
+                        System.out.println("Skipped.");
+                        break;
+                    }
+                }
+            }
+            System.out.println("--Organization's employee number (long value, > 0):");
+            while (true) {
+                System.out.print("-->> ");
+                try {
+                    long employeeCount = UserInteractionManager.readLong(false, false);
+                    if (employeeCount > 0) {
+                        newOrganization.setEmployeesCount(employeeCount);
+                        break;
+                    } else {
+                        System.out.println("Employee number has to be greater than 0.");
+                    }
+                } catch (WrongInputFormatException e) {
+                    continue;
+                } catch (SkipInputException e) {
+                    newOrganization.setEmployeesCount(workerMap.get(id).getOrganization().getEmployeesCount());
+                    System.out.println("Skipped.");
+                    break;
+                }
+            }
+            System.out.println("--Organization's address:");
+            System.out.println("----Street:");
+            System.out.print("---->> ");
+            String street = scanner.nextLine();
+            if (street.trim().equalsIgnoreCase("/skip")) {
+                newAddress.setStreet(workerMap.get(id).getOrganization().getPostalAddress().getStreet());
+                System.out.println("Skipped.");
+            } else {
+                if (street.equals("")) {
+                    newAddress.setStreet("empty");
+                } else {
+                    newAddress.setStreet(street);
+                }
+            }
+            System.out.println("----Zip code:");
+            System.out.print("---->> ");
+            String zip = scanner.nextLine();
+            if (zip.trim().equalsIgnoreCase("/skip")) {
+                newAddress.setZipCode(workerMap.get(id).getOrganization().getPostalAddress().getZipCode());
+                System.out.println("Skipped.");
+            } else {
+                if (zip.equals("")) {
+                    newAddress.setZipCode("empty");
+                } else {
+                    newAddress.setZipCode(zip);
+                }
+            }
+            newOrganization.setPostalAddress(newAddress);
         }
         return new Worker(id, newName, newCoordinates, LocalDate.now(), newSalary, newStartDate, newPosition,
                 newStatus, newOrganization);
